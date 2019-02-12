@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.devMode" value="false"></constant>
+	<constant name="struts.objectFactory" value="spring" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+	<constant name="struts.configuration.xml.reload" value="true" />
+
+	<constant name="struts.i18n.encoding" value="utf-8" />
+
+	<package name="default" namespace="/" extends="struts-default"> 
+		<action name="login" class="loginAction">
+			<result name="success">/page/frontdesk/index.jsp</result>
+			<result name="error">/page/frontdesk/login.jsp</result>
+		</action>
+		
+		<action name="orderSearch" class="orderSearchAction">
+			<result name="success">/page/frontdesk/house_list.jsp</result>
+			<result name="error">/page/frontdesk/house_list.jsp</result>
+		</action>
+	</package>
+</struts>
