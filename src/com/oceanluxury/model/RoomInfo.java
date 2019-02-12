@@ -2,41 +2,37 @@ package com.oceanluxury.model;
 
 public class RoomInfo {
 	
-	private int orderNum;
-	private String custName;
-	private String identityType;
-	private String identityNum;
+	private int roomId;
+	private String floor;
+	private String roomNum;
+	private String roomName;
 	private String telNum;
-	private String custAddress;
 	private String roomType;
-	private String roomPrice;
-	private String moveInDate;
-	private String moveOutDate;
-	private String deposit;
+	private String roomStatus;
 	
-	public int getOrderNum() {
-		return orderNum;
+	public int getRoomId() {
+		return roomId;
 	}
-	public void setOrderNum(int orderNum) {
-		this.orderNum = orderNum;
+	public void setRoomId(int roomId) {
+		this.roomId = roomId;
 	}
-	public String getCustName() {
-		return custName;
+	public String getFloor() {
+		return floor;
 	}
-	public void setCustName(String custName) {
-		this.custName = custName;
+	public void setFloor(String floor) {
+		this.floor = floor;
 	}
-	public String getIdentityType() {
-		return identityType;
+	public String getRoomNum() {
+		return roomNum;
 	}
-	public void setIdentityType(String identityType) {
-		this.identityType = identityType;
+	public void setRoomNum(String roomNum) {
+		this.roomNum = roomNum;
 	}
-	public String getIdentityNum() {
-		return identityNum;
+	public String getRoomName() {
+		return roomName;
 	}
-	public void setIdentityNum(String identityNum) {
-		this.identityNum = identityNum;
+	public void setRoomName(String roomName) {
+		this.roomName = roomName;
 	}
 	public String getTelNum() {
 		return telNum;
@@ -44,41 +40,17 @@ public class RoomInfo {
 	public void setTelNum(String telNum) {
 		this.telNum = telNum;
 	}
-	public String getCustAddress() {
-		return custAddress;
-	}
-	public void setCustAddress(String custAddress) {
-		this.custAddress = custAddress;
-	}
 	public String getRoomType() {
 		return roomType;
 	}
 	public void setRoomType(String roomType) {
 		this.roomType = roomType;
 	}
-	public String getRoomPrice() {
-		return roomPrice;
+	public String getRoomStatus() {
+		return roomStatus;
 	}
-	public void setRoomPrice(String roomPrice) {
-		this.roomPrice = roomPrice;
+	public void setRoomStatus(String roomStatus) {
+		this.roomStatus = roomStatus;
 	}
-	public String getMoveInDate() {
-		return moveInDate;
-	}
-	public void setMoveInDate(String moveInDate) {
-		this.moveInDate = moveInDate;
-	}
-	public String getMoveOutDate() {
-		return moveOutDate;
-	}
-	public void setMoveOutDate(String moveOutDate) {
-		this.moveOutDate = moveOutDate;
-	}
-	public String getDeposit() {
-		return deposit;
-	}
-	public void setDeposit(String deposit) {
-		this.deposit = deposit;
-	}
-
+	
 }
