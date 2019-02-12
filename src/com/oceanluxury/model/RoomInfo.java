@@ -3,7 +3,7 @@ package com.oceanluxury.model;
 public class RoomInfo {
 	
 	private int roomId;
-	private String floor;
+	private String floorNum;
 	private String roomNum;
 	private String roomName;
 	private String telNum;
@@ -16,11 +16,11 @@ public class RoomInfo {
 	public void setRoomId(int roomId) {
 		this.roomId = roomId;
 	}
-	public String getFloor() {
-		return floor;
+	public String getFloorNum() {
+		return floorNum;
 	}
-	public void setFloor(String floor) {
-		this.floor = floor;
+	public void setFloorNum(String floorNum) {
+		this.floorNum = floorNum;
 	}
 	public String getRoomNum() {
 		return roomNum;
