@@ -5,7 +5,7 @@
 	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 	<display-name>Hotel Front Desk</display-name>
 	<welcome-file-list>
-		<welcome-file>/page/frontdesk/login.jsp</welcome-file>
+		<welcome-file>/page/frontdesk/index.jsp</welcome-file>
 	</welcome-file-list>
 
 	<!-- spring resource -->

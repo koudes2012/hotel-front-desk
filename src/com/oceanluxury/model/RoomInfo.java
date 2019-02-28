@@ -9,7 +9,16 @@ public class RoomInfo {
 	private String telNum;
 	private String roomType;
 	private String roomStatus;
+	private String buildingId;
+	private String buildingName;
+	private String totalFloor;
 	
+	public String getBuildingId() {
+		return buildingId;
+	}
+	public void setBuildingId(String buildingId) {
+		this.buildingId = buildingId;
+	}
 	public int getRoomId() {
 		return roomId;
 	}
@@ -51,6 +60,18 @@ public class RoomInfo {
 	}
 	public void setRoomStatus(String roomStatus) {
 		this.roomStatus = roomStatus;
+	}
+	public String getBuildingName() {
+		return buildingName;
+	}
+	public void setBuildingName(String buildingName) {
+		this.buildingName = buildingName;
+	}
+	public String getTotalFloor() {
+		return totalFloor;
+	}
+	public void setTotalFloor(String totalFloor) {
+		this.totalFloor = totalFloor;
 	}
 	
 }

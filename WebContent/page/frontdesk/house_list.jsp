@@ -166,7 +166,7 @@
 			<div class="ui_content">
 				<div class="ui_text_indent">
 					<div id="box_border">
-						<div id="box_top">搜索</div>
+						<div id="box_top">Upcoming Tasks Search</div>
 						<div id="box_center">
 							RoomType
 							<s:select name="roomType" id="roomType" cssStyle="ui_select01"

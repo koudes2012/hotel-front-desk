@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.oceanluxury">
+	<resultMap type="com.oceanluxury.model.RoomInfo" id="roomInfo">
+		<result property="roomId" column="roomId" />
+		<result property="floorNum" column="floorNum" />
+		<result property="roomNum" column="roomNum" />
+		<result property="roomName" column="roomName" />
+		<result property="telNum" column="telNum" />
+		<result property="roomType" column="roomType" />
+		<result property="roomStatus" column="roomStatus" />
+		<result property="buildingId" column="buildingId" />
+		<result property="buildingName" column="buildingName" />
+		<result property="totalFloor" column="totalFloor" />		
+	</resultMap>
+	<select id="roomSearch" parameterType="java.util.Map" resultMap="roomInfo">
+		select 
+			a.*, 
+			b.buildingName, 
+			b.totalFloor 
+		from room_info a 
+		left join building_info b
+			on  a.buildingId = b.buildingId
+		where 1 = 1
+		<choose>
+			<when test="buildingId !=null and buildingId !=''">
+				and buildingId = #{buildingId}
+			</when>
+		</choose>
+	</select>
+</mapper>

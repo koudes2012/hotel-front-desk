@@ -12,5 +12,8 @@
 	<bean id="roomOrderDao" class="com.oceanluxury.frontdesk.dao.imp.RoomOrderDaoImp">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 	</bean>
+	<bean id="roomInfoDao" class="com.oceanluxury.frontdesk.dao.imp.RoomInfoDaoImp">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
 	
 </beans>

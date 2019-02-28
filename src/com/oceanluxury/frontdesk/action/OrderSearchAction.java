@@ -2,8 +2,6 @@ package com.oceanluxury.frontdesk.action;
 
 import java.util.List;
 
-import org.apache.struts2.ServletActionContext;
-
 import com.oceanluxury.frontdesk.service.imp.RoomOrderServiceImp;
 import com.oceanluxury.model.RoomOrder;
 import com.opensymphony.xwork2.ActionSupport;

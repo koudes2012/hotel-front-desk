@@ -7,9 +7,13 @@
 	<typeAliases>
 		<typeAlias alias="user" type="com.oceanluxury.model.User" />
 		<typeAlias alias="roomOrder" type="com.oceanluxury.model.RoomOrder" />
+		<typeAlias alias="roomInfo" type="com.oceanluxury.model.RoomInfo" />
+		<typeAlias alias="customer" type="com.oceanluxury.model.Customer" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="com/oceanluxury/user.xml" />
 		<mapper resource="com/oceanluxury/roomOrder.xml" />
+		<mapper resource="com/oceanluxury/roomInfo.xml" />
+		<mapper resource="com/oceanluxury/customer.xml" />
 	</mappers>
 </configuration>

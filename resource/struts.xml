@@ -8,15 +8,74 @@
 
 	<constant name="struts.i18n.encoding" value="utf-8" />
 
-	<package name="default" namespace="/" extends="struts-default"> 
+	<package name="default" namespace="/" extends="struts-default">
+		<!-- ====================== Hotel Front Desk ======================= -->
 		<action name="login" class="loginAction">
 			<result name="success">/page/frontdesk/index.jsp</result>
 			<result name="error">/page/frontdesk/login.jsp</result>
 		</action>
-		
 		<action name="orderSearch" class="orderSearchAction">
 			<result name="success">/page/frontdesk/house_list.jsp</result>
 			<result name="error">/page/frontdesk/house_list.jsp</result>
 		</action>
+		<action name="roomStatus" class="roomStatusAction">
+			<result name="success">/page/frontdesk/loupanchart.jsp</result>
+			<result name="error">/page/frontdesk/loupanchart.jsp</result>
+		</action>
+		<action name="roomStatusPop" class="roomStatusPopAction">
+			<result name="success">/page/frontdesk/roomStatusPop.jsp</result>
+			<result name="error">/page/frontdesk/loupanchart.jsp</result>
+		</action>
+		<action name="checkInOut" class="checkInOutAction">
+			<result name="success">/page/frontdesk/checkInOut.jsp</result>
+			<result name="error">/page/frontdesk/index.jsp</result>
+		</action>
+		<action name="specialService" class="specialServiceAction">
+			<result name="success">/page/frontdesk/specialService.jsp</result>
+			<result name="error">/page/frontdesk/index.jsp</result>
+		</action>
+		<action name="specialServicePop" class="specialServicePopAction">
+			<result name="success">/page/frontdesk/specialServicePop.jsp</result>
+			<result name="error">/page/frontdesk/specialService.jsp</result>
+		</action>
+		<action name="maintenance" class="maintenanceAction">
+			<result name="success">/page/frontdesk/maintenance.jsp</result>
+			<result name="error">/page/frontdesk/index.jsp</result>
+		</action>
+		<action name="maintenancePop" class="maintenancePopAction">
+			<result name="success">/page/frontdesk/maintenancePop.jsp</result>
+			<result name="error">/page/frontdesk/index.jsp</result>
+		</action>
+		<action name="kiosk" class="kioskAction">
+			<result name="success">/page/frontdesk/kiosk.jsp</result>
+			<result name="error">/page/frontdesk/index.jsp</result>
+		</action>
+		
+		<!-- ========================== Customer =========================== -->
+		<action name="custLogin" class="custLoginAction">
+			<result name="success">/page/customer/custIndex.jsp</result>
+			<result name="error">/page/customer/custLogin.jsp</result>
+		</action>
+		
+		<action name="custRegister" class="custRegisterAction">
+			<result name="success">/page/customer/custIndex.jsp</result>
+			<result name="error">/page/customer/custRegister.jsp</result>
+		</action>
+		
+		<action name="custAvailability" class="custAvailabilityAction">
+			<result name="success">/page/customer/custCart.jsp</result>
+			<result name="error">/page/customer/custIndex.jsp</result>
+		</action>
+		
+		<action name="custCheckout" class="custCheckoutAction">
+			<result name="success">/page/customer/custCheckout.jsp</result>
+			<result name="error">/page/customer/custCart.jsp</result>
+		</action>
+		
+		<action name="custPlaceOrder" class="custPlaceOrderAction">
+			<result name="success">/page/customer/custCheckoutSuccess.jsp</result>
+			<result name="error">/page/customer/custCheckout.jsp</result>
+		</action>
+		
 	</package>
 </struts>
