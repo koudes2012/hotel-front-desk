@@ -20,7 +20,7 @@ public class UserServiceImp implements UserService {
 
     public boolean loginCheck(String username, String password) {
     	
-    	List<User> userList = userDao.findUserByName(username);
+    	List<User> userList = userDao.findUserByEmail(username);
     	
     	Boolean returnFlg = false;
     	if (userList != null && userList.size() == 1) {
@@ -32,5 +32,9 @@ public class UserServiceImp implements UserService {
     	}
     	
     	return returnFlg;
+    }
+
+    public void insertUser(User user) {
+    	userDao.insertUser(user);
     }
 }

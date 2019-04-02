@@ -6,11 +6,19 @@
 <mapper namespace="com.oceanluxury">
 	<resultMap type="com.oceanluxury.model.User" id="user">
 		<result property="id" column="id" />
-		<result property="name" column="name" />
+		<result property="firstName" column="firstName" />
+		<result property="lastName" column="lastName" />
+		<result property="email" column="email" />
+		<result property="phoneNumber" column="phoneNumber" />
 		<result property="password" column="password" />
 	</resultMap>
-	<select id="findUserByName" resultMap="user">
-		select name, password from user
-		where name = #{name}
+	<select id="findUserByEmail" resultMap="user">
+		select id, firstName, lastName, email, phoneNumber, password from user
+		where email = #{email}
 	</select>
+	
+	<insert id="insertUser" parameterType="user">
+		insert into user(firstName, lastName, email, phoneNumber, password) values (#{id},#{firstName},#{lastName},#{email},#{password})
+	</insert>
+	
 </mapper>

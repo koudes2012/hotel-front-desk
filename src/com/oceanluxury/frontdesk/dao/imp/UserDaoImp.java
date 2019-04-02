@@ -8,8 +8,12 @@ import com.oceanluxury.model.User;
 
 public class UserDaoImp extends SqlSessionDaoSupport {
 
-	public List<User> findUserByName(String userName) {
-		return getSqlSession().selectList("findUserByName", userName);
+	public List<User> findUserByEmail(String email) {
+		return getSqlSession().selectList("findUserByEmail", email);
+	}
+	
+	public void insertUser(User user) {
+		getSqlSession().insert("insertUser", user);
 	}
 	
 }

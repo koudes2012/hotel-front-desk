@@ -45,50 +45,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="w3_agileits_main_grid w3l_main_grid">
 					<div class="agileits_grid">
 						<h5>E-mail </h5>
-							<input type="email" name="Email" placeholder="ex : myname@gmail.com" required="">
+							<input type="email" name="email" placeholder="ex : myname@gmail.com" required="">
 					</div>
 				</div>
 				<div class="agileits_main_grid w3_agileits_main_grid">
 					<div class="wthree_grid">
-						<h5>Room Type</h5>
-						<select id="category" name="category" required="">
-							<option value="none">None</option>
-							<option value="category1">Single Room</option>
-							<option value="category2">Double Room</option>
-							<option value="category3">Suit Room</option>
-							
-						</select>
+						<h5>Phone Number</h5>
+						<input type="text" name="phoneNumber" placeholder="1234567890" required="">
 					</div>
 				</div>
 				<div class="agileits_w3layouts_main_grid w3ls_main_grid">
 					<div class="agileinfo_grid">
-					<h5>Check In & Time *</h5>
-						
-						<div class="agileits_w3layouts_main_gridl">
-							<input class="date" id="datepicker" name="Text" type="text" value="mm/dd/yyyy" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '08/13/2016';}" required="">
-						</div>
-						<div class="agileits_w3layouts_main_gridr">
-							<input type="time" name="Time" placeholder=" " required="">
-						</div>
-						<div class="clear"> </div>
+					<h5>Password</h5>
+						<input type="password" name="passwordInput" required="">
 					</div>
 				</div>
-				<div class="agileinfo_main_grid">
-					<div class="agileits_w3layouts_grid">
-						<h5>Number of Guests *</h5>
-						<select id="category1" name="category1" required="">
-							<option value="category1">01</option>
-							<option value="category2">02</option>
-							<option value="category3">03</option>
-							<option value="category4">04</option>
-							<option value="category2">05</option>
-							<option value="category3">06</option>
-						</select>
+				<div class="agileits_w3layouts_main_grid w3ls_main_grid">
+					<div class="agileinfo_grid">
+					<h5>Password Confirm</h5>
+						<input type="password" name="passwordConfirm" required="">
 					</div>
 				</div>
 				
 				<div class="w3_main_grid">
-					
 					<div class="w3_main_grid_right">
 						<input type="submit" value="Register">
 					</div>
