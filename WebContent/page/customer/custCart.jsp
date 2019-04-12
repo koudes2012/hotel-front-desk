@@ -42,7 +42,7 @@
 				<span><i class="ion-android-cloud-outline"></i>18 °C</span>
 				<span><i class="ion-ios-location-outline"></i> 121 King Str, Melbourne Victoria</span>
 				<span><i class="fa fa-phone" aria-hidden="true"></i> 1-548-854-8898</span>
-				<span>Welcome to visit our hotel, GUEST</span>
+				<span>Welcome to visit our hotel, ${user.firstName}</span>
 			</div>
 			<div class="header-top-right">
 				<ul>
@@ -116,54 +116,22 @@
 			</div>
 		</div>
 	</div>
-	<form id="submitForm" action="" method="post">
+	<form id="availabilityForm" action="" method="post">
 		<div class="check-avail">
 			<div class="container">
 				<div class="arrival date-title ">
 					<label>Arrival Date </label>
 					<div id="datepicker" class="input-group date" data-date-format="dd-mm-yyyy">
-						<input class="form-control" type="text">
+						<input class="form-control" type="text" name="arrivalDate">
 						<span class="input-group-addon"><img src="images/Home-1/date-icon.png" alt="#"></span>
 					</div>
 				</div>
 				<div class="departure date-title ">
 					<label>Departure Date </label>
 					<div id="datepickeri" class="input-group date" data-date-format="dd-mm-yyyy">
-						<input class="form-control" type="text">
+						<input class="form-control" type="text" name="departureDate">
 						<span class="input-group-addon"><img src="images/Home-1/date-icon.png" alt="#"></span>
 					</div>
-				</div>
-				<div class="adults date-title ">
-					<label>Adults</label>
-					
-						<div class=" carousel-search">
-							<div class="btn-group">
-								<a class="btn dropdown-toggle " data-toggle="dropdown" href="#">2</a>
-								<ul class="dropdown-menu">
-									<li><a>1</a></li>
-									<li><a>2</a></li>
-									<li><a>3</a></li>
-									<li><a>4</a></li>
-								</ul>
-							</div>
-						</div>
-					
-				</div>
-				<div class="children date-title ">
-					<label>Children</label>
-					<form>
-						<div class=" carousel-search">
-							<div class="btn-group">
-								<a class="btn dropdown-toggle " data-toggle="dropdown" href="#">2</a>
-								<ul class="dropdown-menu">
-									<li><a>1</a></li>
-									<li><a>2</a></li>
-									<li><a>3</a></li>
-									<li><a>4</a></li>
-								</ul>
-							</div>
-						</div>
-					</form>
 				</div>
 				<div class="find_btn date-title" id="availability_check">
 					<div class="text-find">
@@ -180,79 +148,60 @@
 <section class="cart-section">
     <div class="container">
         
-        <form id="submitForm" action="" method="post">
+        <form id="checkoutForm" action="" method="post">
+		<s:hidden name="arrivalDate"/>
+		<s:hidden name="departureDate"/>
         <!--Cart Outer-->
         <div class="cart-outer">
             <div class="table-outer">
                 <table class="cart-table">
                     <thead class="cart-header">
                         <tr>
-                            <th class="prod-column">Product</th>
+                            <th class="prod-column">Room</th>
                             <th>&nbsp;</th>
                             <th class="price">Price</th>
                             <th>Quantity</th>
                             <th>Available</th>
-                            <th class="remove"><input type="checkbox"></th>
                         </tr>
                     </thead>
                     
-                    <tbody>
-                        <tr>
-                            <td colspan="2" class="prod-column">
-                                <div class="column-box">
-                                    <figure class="prod-thumb"><a href="#"><img src="images/product/13.jpg" alt=""></a></figure>
-                                    <h3 class="prod-title padd-top-20">Single Room</h3>
-                                </div>
-                            </td>
-                            <td class="price">$ 155</td>
-                            <td class="qty"><input class="quantity-spinner" type="text" value="1" name="quantity"></td>
-                            <td class="sub-total">10</td>
-                            <td class="remove"><input type="checkbox"></td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" class="prod-column">
-                                <div class="column-box">
-                                    <figure class="prod-thumb"><a href="#"><img src="images/product/13.jpg" alt=""></a></figure>
-                                    <h3 class="prod-title padd-top-20">Double Room</h3>
-                                </div>
-                            </td>
-                            <td class="price">$ 155</td>
-                            <td class="qty"><input class="quantity-spinner" type="text" value="1" name="quantity"></td>
-                            <td class="sub-total">11</td>
-                            <td class="remove"><input type="checkbox"></td>
-                        </tr>
+					<tbody>
+                   		<s:iterator id="reservation" value="reservationList" status="status">
+						    <s:set var="roomTypeName" value="#reservation.roomTypeName" />
+						    <s:set var="availableNum" value="#reservation.availableNum" />
+						    <s:set var="roomPrice" value="#reservation.roomPrice" />
+						    <tr>
+						        <td colspan="2" class="prod-column">
+	                                <div class="column-box">
+	                                    <figure class="prod-thumb"><a href="#"><img src="images/product/13.jpg" alt=""></a></figure>
+	                                    <h3 class="prod-title padd-top-20"><s:property value="#roomTypeName" /></h3>
+	                                </div>
+	                            </td>
+	                            <td class="price">$ <s:property value="#roomPrice" /></td>
+	                            <td class="qty">
+	                            	<s:hidden name="%{'reservationList['+#status.index+'].roomId'}"/>
+	                            	<s:hidden name="%{'reservationList['+#status.index+'].roomType'}"/>
+	                            	<s:hidden name="%{'reservationList['+#status.index+'].roomTypeName'}"/>
+	                            	<s:hidden name="%{'reservationList['+#status.index+'].roomPrice'}"/>
+	                            	<s:textfield cssClass="quantity-spinner" name="%{'reservationList['+#status.index+'].quantity'}" onfocusout="countTotal()"/>
+	                            </td>
+	                            <td class="sub-total"><s:property value="#availableNum" /></td>
+						    </tr>
+						</s:iterator>
+						<s:hidden name="reservationListSize" value="%{reservationList.size()}" />
                     </tbody>
                 </table>
             </div>
             
-            <div class="update-cart-box clearfix">
-                <div class="pull-left">
-                    <div class="apply-coupon clearfix">
-                        <div class="form-group clearfix">
-                            <input type="text" name="coupon-code" value="" placeholder="Your coupon code">
-                        </div>
-                        <div class="form-group clearfix">
-                            <button type="button" class="thm-btn thm-blue-bg btn-style-one">Apply</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="pull-right">
-                    <button type="button" class="thm-btn update-cart btn-style-one">Update Cart</button> &nbsp;
-                </div>
-                
-            </div>
-            
-            
             <div class="row clearfix">
-
-                
                 <div class="column cart-total col-md-6 col-sm-12 col-xs-12 col-md-offset-6">
                     <h3>Cart Totals</h3>
                     <!--Totals Table-->
                     <ul class="totals-table">
-                        <li class="clearfix"><span class="col col-title">Sub Total</span><span class="col">$15.00</span></li>
-                        <li class="clearfix total"><span class="col col-title">Order Total</span><span class="col">$15.00</span></li>
+                        <li class="clearfix total">
+	                        <span class="col col-title">Order Total</span>
+	                        <span class="col">$ <span id="orderTotal"></span></span>
+                        </li>
                     </ul>
                     
                     <div class="margin-top-30" id="checkout_button">
@@ -317,9 +266,28 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#checkout_button").click(function(){
-			$("#submitForm").attr("action", "custCheckout").submit();
+			$("#checkoutForm").attr("action", "custCheckout").submit();
 		});
 	});
+	
+	$(document).ready(function(){
+		$("#availability_check").click(function(){
+			$("#availabilityForm").attr("action", "custAvailability").submit();
+		});
+	});
+	
+	function countTotal(){
+		var reservationListSize = document.getElementsByName("reservationListSize")[0].value;
+		var orderTotal = 0;
+		for (var i=0; i<reservationListSize; i++) {
+			var price = document.getElementsByName("reservationList[" + i + "].roomPrice")[0].value;
+			var quantity = document.getElementsByName("reservationList[" + i + "].quantity")[0].value;
+			if (quantity != "") {
+				orderTotal = orderTotal + price * quantity;
+			}
+		}
+		document.getElementById("orderTotal").innerHTML = orderTotal;
+	}
 </script>
 
 </body>

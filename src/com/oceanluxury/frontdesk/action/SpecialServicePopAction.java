@@ -1,45 +1,43 @@
 package com.oceanluxury.frontdesk.action;
 
-import java.util.List;
+import org.apache.struts2.ServletActionContext;
 
-import com.oceanluxury.frontdesk.service.imp.RoomOrderServiceImp;
-import com.oceanluxury.frontdesk.service.imp.UserServiceImp;
-import com.oceanluxury.model.RoomOrder;
+import com.oceanluxury.frontdesk.service.imp.RoomInfoServiceImp;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class SpecialServicePopAction extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;
-	private String roomType;
-	private List<RoomOrder> roomOrderList;
-    private RoomOrderServiceImp roomOrderService;
+	private String roomId;
+	private String roomName;
+	private String morningCallDate;
+	private String morningCallTime;
+	private String taxiCallDate;
+	private String taxiCallTime;
+	private String taxiLocation;
+	private String remark;
+    private RoomInfoServiceImp roomInfoService;
 
-	public void setRoomOrderService(RoomOrderServiceImp roomOrderService) {
-        this.roomOrderService = roomOrderService;
-    }
-	
-	public List<RoomOrder> getRoomOrderList() {
-		return roomOrderList;
+    public String getRoomId() {
+		return roomId;
+	}
+	public void setRoomId(String roomId) {
+		this.roomId = roomId;
 	}
 
-	public void setRoomOrderList(List<RoomOrder> roomOrderList) {
-		this.roomOrderList = roomOrderList;
+	public RoomInfoServiceImp getRoomInfoService() {
+		return roomInfoService;
 	}
-	
-    public String getRoomType() {
-        return roomType;
-    }
-
-    public void setRoomType(String roomType) {
-        this.roomType = roomType;
-    }
+	public void setRoomInfoService(RoomInfoServiceImp roomInfoService) {
+		this.roomInfoService = roomInfoService;
+	}
 
     /**
      * Login process
 	 */
     @Override
     public String execute() throws Exception {
-    	this.roomOrderList = roomOrderService.orderSearch(roomType);
+    	this.roomId = ServletActionContext.getRequest().getParameter("roomId");
         return SUCCESS;
     }
 

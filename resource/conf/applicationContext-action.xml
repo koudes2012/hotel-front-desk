@@ -11,42 +11,54 @@
 		<property name="userService" ref="userService"></property>
 	</bean>
 	<bean id="orderSearchAction" class="com.oceanluxury.frontdesk.action.OrderSearchAction">
-		<property name="roomOrderService" ref="roomOrderService"></property>
+		<property name="reservationService" ref="reservationService"></property>
+	</bean>
+	<bean id="orderSearchPopAction" class="com.oceanluxury.frontdesk.action.OrderSearchPopAction">
+		<property name="reservationService" ref="reservationService"></property>
 	</bean>
 	<bean id="roomStatusAction" class="com.oceanluxury.frontdesk.action.RoomStatusAction">
 		<property name="roomInfoService" ref="roomInfoService"></property>
 	</bean>
 	<bean id="roomStatusPopAction" class="com.oceanluxury.frontdesk.action.RoomStatusPopAction">
-		<property name="roomOrderService" ref="roomOrderService"></property>
+		<property name="roomInfoService" ref="roomInfoService"></property>
+	</bean>
+	<bean id="taskSearchAction" class="com.oceanluxury.frontdesk.action.TaskSearchAction">
+		<property name="reservationService" ref="reservationService"></property>
 	</bean>
 	<bean id="checkInOutAction" class="com.oceanluxury.frontdesk.action.CheckInOutAction">
-		<property name="roomOrderService" ref="roomOrderService"></property>
+		<property name="roomInfoService" ref="roomInfoService"></property>
+		<property name="reservationService" ref="reservationService"></property>
 	</bean>
 	<bean id="specialServiceAction" class="com.oceanluxury.frontdesk.action.SpecialServiceAction">
-		<property name="roomOrderService" ref="roomOrderService"></property>
+		<property name="roomInfoService" ref="roomInfoService"></property>
 	</bean>
 	<bean id="specialServicePopAction" class="com.oceanluxury.frontdesk.action.SpecialServicePopAction">
-		<property name="roomOrderService" ref="roomOrderService"></property>
+		<property name="roomInfoService" ref="roomInfoService"></property>
 	</bean>
 	<bean id="maintenanceAction" class="com.oceanluxury.frontdesk.action.MaintenanceAction">
-		<property name="roomOrderService" ref="roomOrderService"></property>
+		<property name="roomInfoService" ref="roomInfoService"></property>
 	</bean>
 	<bean id="maintenancePopAction" class="com.oceanluxury.frontdesk.action.MaintenancePopAction">
-		<property name="roomOrderService" ref="roomOrderService"></property>
+		<property name="roomInfoService" ref="roomInfoService"></property>
 	</bean>
 	<bean id="kioskAction" class="com.oceanluxury.frontdesk.action.KioskAction">
-		<property name="roomOrderService" ref="roomOrderService"></property>
+		<property name="roomInfoService" ref="roomInfoService"></property>
 	</bean>
 	
 	<!-- ========================== Customer =========================== -->
 	<bean id="custLoginAction" class="com.oceanluxury.customer.action.CustLoginAction">
+		<property name="userService" ref="userService"></property>
 	</bean>
 	<bean id="custRegisterAction" class="com.oceanluxury.customer.action.CustRegisterAction">
+		<property name="userService" ref="userService"></property>
 	</bean>
 	<bean id="custAvailabilityAction" class="com.oceanluxury.customer.action.CustAvailabilityAction">
+		<property name="reservationService" ref="reservationService"></property>
 	</bean>
 	<bean id="custCheckoutAction" class="com.oceanluxury.customer.action.CustCheckoutAction">
+		<property name="reservationService" ref="reservationService"></property>
 	</bean>
 	<bean id="custPlaceOrderAction" class="com.oceanluxury.customer.action.CustPlaceOrderAction">
+		<property name="reservationService" ref="reservationService"></property>
 	</bean>
 </beans>

@@ -51,109 +51,10 @@
 	$(function() {
 		$( "#datepicker,#datepicker1" ).datepicker();
 	});
-
-	/** 检测房源房号是否存在  **/
-	function checkFyFh(){
-		// 分别获取小区编号、栋号、层号、房号
-		var fyID = $('#fyID').val();
-		var fyXqCode = $("#fyXq").val();
-		var fyDh = $("#fyDh").val();
-		var fyCh = $("#fyCh").val();	
-		var fyFh = $("#fyFh").val();
-		if(fyXqCode!="" && fyDh!="" && fyCh!="" && fyFh!=""){
-			// 给房屋坐落地址赋值
-			$("#fyZldz").val($('#fyDh option:selected').text() + fyCh + "-" + fyFh);
-			// 异步判断该房室是否存在，如果已存在，给用户已提示哦
-			$.ajax({
-				type:"POST",
-				url:"checkFyFhIsExists.action",
-				data:{"fangyuanEntity.fyID":fyID,"fangyuanEntity.fyXqCode":fyXqCode, "fangyuanEntity.fyDhCode":fyDh, "fangyuanEntity.fyCh":fyCh, "fangyuanEntity.fyFh":fyFh},
-				dataType : "text",
-				success:function(data){
-// 					alert(data);
-					// 如果返回数据不为空，更改“房源信息”
-					if(data=="1"){
-						 art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'该房室在系统中已经存在哦，\n请维护其他房室数据', ok:true,});
-						 $("#fyFh").css("background", "#EEE");
-						 $("#fyFh").focus();
-						 return false;
-					}
-				}
-			});
-		}
-	}
-	
-	/** 检测房源房号是否存在并提交form  **/
-	function checkFyFhSubmit(){
-		// 分别获取小区编号、栋号、层号、房号
-		var fyID = $('#fyID').val();
-		var fyXqCode = $("#fyXq").val();
-		var fyDh = $("#fyDh").val();
-		var fyCh = $("#fyCh").val();	
-		var fyFh = $("#fyFh").val();
-		if(fyXqCode!="" && fyDh!="" && fyCh!="" && fyFh!=""){
-			// 给房屋坐落地址赋值
-			$("#fyZldz").val($('#fyDh option:selected').text()  + fyCh + "-" + fyFh);
-			// 异步判断该房室是否存在，如果已存在，给用户已提示哦
-			$.ajax({
-				type:"POST",
-				url:"checkFyFhIsExists.action",
-				data:{"fangyuanEntity.fyID":fyID,"fangyuanEntity.fyXqCode":fyXqCode, "fangyuanEntity.fyDhCode":fyDh, "fangyuanEntity.fyCh":fyCh, "fangyuanEntity.fyFh":fyFh},
-				dataType : "text",
-				success:function(data){
-// 					alert(data);
-					// 如果返回数据不为空，更改“房源信息”
-					if(data=="1"){
-						 art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'该房室在系统中已经存在哦，\n请维护其他房室数据', ok:true,});
-						 $("#fyFh").css("background", "#EEE");
-						 $("#fyFh").focus();
-						 return false;
-					}else{
-						$("#submitForm").attr("action", "/xngzf/archives/saveOrUpdateFangyuan.action").submit();
-					}
-				}
-			});
-		}
-		return true;
-	}
-	
-	/** 表单验证  **/
-	function validateForm(){
-		if($("#fyXqName").val()==""){
-			art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'填写房源小区', ok:true,});
-			return false;
-		}
-		if($("#fyDh").val()==""){
-			art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'填写房源栋号', ok:true,});
-			return false;
-		}
-		if($("#fyCh").val()==""){
-			art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'填写房源层号', ok:true,});
-			return false;
-		}
-		if($("#fyFh").val()==""){
-			art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'填写房源房号', ok:true,});
-			return false;
-		}
-		if($("#fyZongMj").val()==""){
-			art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'填写房源面积', ok:true,});
-			return false;
-		}
-		if($("#fyJizuMj").val()==""){
-			art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'填写计租面积', ok:true,});
-			return false;
-		}
-		if($("#fyZldz").val()==""){
-			art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'填写房源座落地址', ok:true,});
-			return false;
-		}
-		return true;
-	}
 </script>
 </head>
 <body>
-<form id="submitForm" name="submitForm" action="/xngzf/archives/initFangyuan.action" method="post">
-	<input type="hidden" name="fyID" value="14458625716623" id="fyID"/>
+<form id="submitForm" name="submitForm" action="specialServicePop" method="post">
 	<div id="container">
 		<div id="nav_links">
 			Current Location: Service&nbsp;>&nbsp;<span style="color: #1A5CC6;">Special Service</span>
@@ -166,16 +67,26 @@
 		<div class="ui_content">
 			<table>
 				<tr>
+					<th class="ui_text_lt" colspan="4">
+						Room :  <s:property value="roomName"/>
+						<s:hidden name="roomId"></s:hidden>	
+					</th>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td></td>
+				</tr>
+				<tr>
 					<th class="ui_text_lt" colspan="4">Morning Call</th>
 				</tr>
 				<tr>
 					<td class="ui_text_rt" width="80">Date</td>
 					<td class="ui_text_lt">
-						<input class="date" id="datepicker" name="Text" type="text" value="mm/dd/yyyy" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '08/13/2016';}">
+						<input class="date" id="datepicker" name="morningCallDate" type="text" value="mm/dd/yyyy" onfocus="this.value = '';" >
 					</td>
 					<td class="ui_text_rt" width="80">Time</td>
 					<td class="ui_text_lt">
-						<input type="time" name="Time" placeholder=" ">
+						<input type="time" name="morningCallTime" placeholder=" ">
 					</td>
 				</tr>
 				<tr>
@@ -195,17 +106,17 @@
 				<tr>
 					<td class="ui_text_rt" width="80">Date</td>
 					<td class="ui_text_lt">
-						<input class="date" id="datepicker" name="Text" type="text" value="mm/dd/yyyy" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '08/13/2016';}">
+						<input class="date" id="datepicker1" name="Text" type="taxiCallDate" value="mm/dd/yyyy" onfocus="this.value = '';" >
 					</td>
 					<td class="ui_text_rt" width="80">Time</td>
 					<td class="ui_text_lt">
-						<input type="time" name="Time" placeholder=" ">
+						<input type="time" name="taxiCallTime" placeholder=" ">
 					</td>
 				</tr>
 				<tr>
 					<td class="ui_text_rt">Location</td>
 					<td class="ui_text_lt" colspan="3">
-						<textarea rows="5" cols="70"></textarea>
+						<textarea name="taxiLocation" rows="5" cols="70"></textarea>
 					</td>
 				</tr>
 				<tr>
@@ -225,7 +136,7 @@
 				<tr>
 					<td class="ui_text_rt">Remark</td>
 					<td class="ui_text_lt" colspan="3">
-						<textarea rows="5" cols="70"></textarea>
+						<textarea name="remark" rows="5" cols="70"></textarea>
 					</td>
 				</tr>
 				<tr>

@@ -213,12 +213,13 @@
 			});*/
             data = [{"accessPath":"","checked":false,"delFlag":0,"parentID":1,"resourceCode":"","resourceDesc":"","resourceGrade":2,"resourceID":2,"resourceName":"Overview","resourceOrder":0,"resourceType":""},
             {"accessPath":"roomStatus","checked":false,"delFlag":0,"parentID":2,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":4,"resourceName":"Room Status","resourceOrder":0,"resourceType":""},
-            {"accessPath":"orderSearch","checked":false,"delFlag":0,"parentID":2,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":5,"resourceName":"Upcoming Tasks","resourceOrder":0,"resourceType":""},
+            {"accessPath":"orderSearch","checked":false,"delFlag":0,"parentID":2,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":5,"resourceName":"Reservation","resourceOrder":0,"resourceType":""},
+            {"accessPath":"taskSearch","checked":false,"delFlag":0,"parentID":2,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":6,"resourceName":"Task","resourceOrder":0,"resourceType":""},
             {"accessPath":"","checked":false,"delFlag":0,"parentID":1,"resourceCode":"","resourceDesc":"","resourceGrade":2,"resourceID":3,"resourceName":"Service","resourceOrder":0,"resourceType":""},
-            {"accessPath":"checkInOut","checked":false,"delFlag":0,"parentID":3,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":6,"resourceName":"Check In or Out","resourceOrder":0,"resourceType":""},
-            {"accessPath":"specialService","checked":false,"delFlag":0,"parentID":3,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":7,"resourceName":"Specical Services","resourceOrder":0,"resourceType":""},
-            {"accessPath":"kiosk","checked":false,"delFlag":0,"parentID":3,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":8,"resourceName":"Kiosk","resourceOrder":0,"resourceType":""},
-            {"accessPath":"maintenance","checked":false,"delFlag":0,"parentID":3,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":9,"resourceName":"Maintenance","resourceOrder":0,"resourceType":""}];
+            {"accessPath":"checkInOut","checked":false,"delFlag":0,"parentID":3,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":7,"resourceName":"Check In or Out","resourceOrder":0,"resourceType":""},
+            {"accessPath":"specialService","checked":false,"delFlag":0,"parentID":3,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":8,"resourceName":"Specical Services","resourceOrder":0,"resourceType":""},
+            {"accessPath":"kiosk","checked":false,"delFlag":0,"parentID":3,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":9,"resourceName":"Kiosk","resourceOrder":0,"resourceType":""},
+            {"accessPath":"maintenance","checked":false,"delFlag":0,"parentID":3,"resourceCode":"","resourceDesc":"","resourceGrade":3,"resourceID":10,"resourceName":"Maintenance","resourceOrder":0,"resourceType":""}];
             // 如果返回数据不为空，加载"业务模块"目录
             if(data != null){
                 // 将返回的数据赋给zTree

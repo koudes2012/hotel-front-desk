@@ -172,10 +172,10 @@
 				<div id="box_border">
 					<ul id="fang_type">
 						<li style="background-color: #b51d1a;">Booked</li>
-						<li style="background-color: #000EFF;">Available</li>
-						<li style="background-color: #a5c438;">Maintaining</li>
-						<li style="background-color: #7065D5;">CheckIn</li>
-						<li style="background-color: #917430;">CheckOut</li>
+						<li style="background-color: #000EFF;">CheckIn</li>
+						<li style="background-color: #a5c438;">CheckOut</li>
+						<li style="background-color: #7065D5;">Maintaining</li>
+						<li style="background-color: #917430;">Available</li>
 						<li style="background-color: #23b628;">Serving</li>
 						<li style="background-color: #7b8587;">Other</li>
 					</ul>

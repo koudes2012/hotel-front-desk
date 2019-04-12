@@ -1,14 +1,18 @@
 package com.oceanluxury.frontdesk.service.imp;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.oceanluxury.common.Constant;
+import com.oceanluxury.frontdesk.dao.imp.ReservationDaoImpl;
 import com.oceanluxury.frontdesk.dao.imp.RoomInfoDaoImp;
-import com.oceanluxury.frontdesk.service.RoomInfoService;
+import com.oceanluxury.model.Reservation;
 import com.oceanluxury.model.RoomInfo;
+import com.oceanluxury.util.DateUtils;
 
-public class RoomInfoServiceImp implements RoomInfoService {
+public class RoomInfoServiceImp {
 	
 	private static String STATUS_0 = "0";
 	private static String STATUS_1 = "1";
@@ -27,11 +31,17 @@ public class RoomInfoServiceImp implements RoomInfoService {
 	private static String COLOR_STATUS_6 = "#7b8587";
 
     private RoomInfoDaoImp roomInfoDao;
+    private ReservationDaoImpl reservationDao;
 
-    public RoomInfoDaoImp getRoomInfoDao() {
+    public ReservationDaoImpl getReservationDao() {
+		return reservationDao;
+	}
+	public void setReservationDao(ReservationDaoImpl reservationDao) {
+		this.reservationDao = reservationDao;
+	}
+	public RoomInfoDaoImp getRoomInfoDao() {
         return roomInfoDao;
     }
-
     public void setRoomInfoDao(RoomInfoDaoImp roomInfoDao) {
         this.roomInfoDao = roomInfoDao;
     }
@@ -62,4 +72,22 @@ public class RoomInfoServiceImp implements RoomInfoService {
     	}
     	return roomInfoList;
     }
+    
+    public List<RoomInfo> checkInOutSearch(String roomType) {
+    	Map<String, Object> condition = new HashMap<String, Object>();
+    	condition.put("roomType", roomType);
+    	condition.put("reserStatus", Constant.reserStatus_2);
+        condition.put("systemDate", DateUtils.transferdate(new Date(), "dd-MM-yyyy"));
+    	List<RoomInfo> roomInfoList = roomInfoDao.checkInOutSearch(condition);
+    	
+    	return roomInfoList;
+    }
+    
+    public void checkInOut(String roomId, String roomStatus) {
+		Map<String, Object> condition = new HashMap<String, Object>();
+        condition.put("roomId", roomId);
+        condition.put("roomStatus", roomStatus);
+        roomInfoDao.updateRoomInfo(condition);
+    }
+        
 }

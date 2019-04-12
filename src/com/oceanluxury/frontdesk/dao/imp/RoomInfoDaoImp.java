@@ -13,4 +13,12 @@ public class RoomInfoDaoImp extends SqlSessionDaoSupport {
 		return getSqlSession().selectList("roomSearch", map);
 	}
 	
+	public void updateRoomInfo(Map map) {
+		getSqlSession().update("updateRoomInfo", map);
+	}
+	
+	public List<RoomInfo> checkInOutSearch(Map map) {
+		return getSqlSession().selectList("checkInOutSearch", map);
+	}
+	
 }

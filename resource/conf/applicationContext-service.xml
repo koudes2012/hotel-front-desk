@@ -9,11 +9,17 @@
 	<bean id="userService" class="com.oceanluxury.frontdesk.service.imp.UserServiceImp">
 		<property name="userDao" ref="userDao"></property>
 	</bean>
-	<bean id="roomOrderService" class="com.oceanluxury.frontdesk.service.imp.RoomOrderServiceImp">
-		<property name="roomOrderDao" ref="roomOrderDao"></property>
+	<bean id="reservationService" class="com.oceanluxury.frontdesk.service.imp.ReservationServiceImpl">
+		<property name="reservationDao" ref="reservationDao"></property>
+		<property name="paymentDao" ref="paymentDao"></property>
+		<property name="roomInfoDao" ref="roomInfoDao"></property>
 	</bean>
 	<bean id="roomInfoService" class="com.oceanluxury.frontdesk.service.imp.RoomInfoServiceImp">
 		<property name="roomInfoDao" ref="roomInfoDao"></property>
+		<property name="reservationDao" ref="reservationDao"></property>
+	</bean>
+	<bean id="taskService" class="com.oceanluxury.frontdesk.service.imp.TaskServiceImp">
+		<property name="taskDao" ref="taskDao"></property>
 	</bean>
 	
 </beans>

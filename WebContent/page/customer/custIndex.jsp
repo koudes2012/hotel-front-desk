@@ -42,7 +42,7 @@
 				<span><i class="ion-android-cloud-outline"></i>18 °C</span>
 				<span><i class="ion-ios-location-outline"></i> 121 King Str, Melbourne Victoria</span>
 				<span><i class="fa fa-phone" aria-hidden="true"></i> 1-548-854-8898</span>
-				<span>Welcome to visit our hotel, GUEST</span>
+				<span>Welcome to visit our hotel, ${user.firstName}</span>
 			</div>
 			<div class="header-top-right">
 				<ul>
@@ -122,48 +122,16 @@
 				<div class="arrival date-title ">
 					<label>Arrival Date </label>
 					<div id="datepicker" class="input-group date" data-date-format="dd-mm-yyyy">
-						<input class="form-control" type="text">
+						<input class="form-control" type="text" name="arrivalDate"/>
 						<span class="input-group-addon"><img src="images/Home-1/date-icon.png" alt="#"></span>
 					</div>
 				</div>
 				<div class="departure date-title ">
 					<label>Departure Date </label>
 					<div id="datepickeri" class="input-group date" data-date-format="dd-mm-yyyy">
-						<input class="form-control" type="text">
+						<input class="form-control" type="text" name="departureDate"/>
 						<span class="input-group-addon"><img src="images/Home-1/date-icon.png" alt="#"></span>
 					</div>
-				</div>
-				<div class="adults date-title ">
-					<label>Adults</label>
-					
-						<div class=" carousel-search">
-							<div class="btn-group">
-								<a class="btn dropdown-toggle " data-toggle="dropdown" href="#">2</a>
-								<ul class="dropdown-menu">
-									<li><a>1</a></li>
-									<li><a>2</a></li>
-									<li><a>3</a></li>
-									<li><a>4</a></li>
-								</ul>
-							</div>
-						</div>
-					
-				</div>
-				<div class="children date-title ">
-					<label>Children</label>
-					<form>
-						<div class=" carousel-search">
-							<div class="btn-group">
-								<a class="btn dropdown-toggle " data-toggle="dropdown" href="#">2</a>
-								<ul class="dropdown-menu">
-									<li><a>1</a></li>
-									<li><a>2</a></li>
-									<li><a>3</a></li>
-									<li><a>4</a></li>
-								</ul>
-							</div>
-						</div>
-					</form>
 				</div>
 				<div class="find_btn date-title" id="availability_check">
 					<div class="text-find">

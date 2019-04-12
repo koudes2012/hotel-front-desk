@@ -6,14 +6,14 @@
 <configuration>
 	<typeAliases>
 		<typeAlias alias="user" type="com.oceanluxury.model.User" />
-		<typeAlias alias="roomOrder" type="com.oceanluxury.model.RoomOrder" />
 		<typeAlias alias="roomInfo" type="com.oceanluxury.model.RoomInfo" />
-		<typeAlias alias="customer" type="com.oceanluxury.model.Customer" />
+		<typeAlias alias="reservation" type="com.oceanluxury.model.Reservation" />
+		<typeAlias alias="payment" type="com.oceanluxury.model.Payment" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="com/oceanluxury/user.xml" />
-		<mapper resource="com/oceanluxury/roomOrder.xml" />
 		<mapper resource="com/oceanluxury/roomInfo.xml" />
-		<mapper resource="com/oceanluxury/customer.xml" />
+		<mapper resource="com/oceanluxury/reservation.xml" />
+		<mapper resource="com/oceanluxury/payment.xml" />
 	</mappers>
 </configuration>

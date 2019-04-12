@@ -9,11 +9,16 @@
 	<bean id="userDao" class="com.oceanluxury.frontdesk.dao.imp.UserDaoImp">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 	</bean>
-	<bean id="roomOrderDao" class="com.oceanluxury.frontdesk.dao.imp.RoomOrderDaoImp">
-		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-	</bean>
 	<bean id="roomInfoDao" class="com.oceanluxury.frontdesk.dao.imp.RoomInfoDaoImp">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 	</bean>
-	
+	<bean id="reservationDao" class="com.oceanluxury.frontdesk.dao.imp.ReservationDaoImpl">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	<bean id="paymentDao" class="com.oceanluxury.frontdesk.dao.imp.PaymentDaoImp">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	<bean id="taskDao" class="com.oceanluxury.frontdesk.dao.imp.TaskDaoImp">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
 </beans>

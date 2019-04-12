@@ -1,35 +1,57 @@
 package com.oceanluxury.customer.action;
 
+import java.util.List;
+
+import com.oceanluxury.frontdesk.service.imp.ReservationServiceImpl;
+import com.oceanluxury.model.Reservation;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class CustAvailabilityAction extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;
-	private String username;
-    private String password;
+	private String arrivalDate;
+    private String departureDate;
+    private List<Reservation> reservationList;
+    private ReservationServiceImpl reservationService;
+    
+    public String getArrivalDate() {
+		return arrivalDate;
+	}
 
-    public String getUsername() {
-        return username;
-    }
+	public void setArrivalDate(String arrivalDate) {
+		this.arrivalDate = arrivalDate;
+	}
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+	public String getDepartureDate() {
+		return departureDate;
+	}
 
-    public String getPassword() {
-        return password;
-    }
+	public void setDepartureDate(String departureDate) {
+		this.departureDate = departureDate;
+	}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	public List<Reservation> getReservationList() {
+		return reservationList;
+	}
 
-    /**
+	public void setReservationList(List<Reservation> reservationList) {
+		this.reservationList = reservationList;
+	}
+
+	public ReservationServiceImpl getReservationService() {
+		return reservationService;
+	}
+
+	public void setReservationService(ReservationServiceImpl reservationService) {
+		this.reservationService = reservationService;
+	}
+
+	/**
      * Login process
 	 */
     @Override
     public String execute() throws Exception {
-    	
+    	this.reservationList = reservationService.checkAvailability(arrivalDate, departureDate);
         return SUCCESS;
     }
 

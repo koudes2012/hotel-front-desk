@@ -12,7 +12,35 @@ public class RoomInfo {
 	private String buildingId;
 	private String buildingName;
 	private String totalFloor;
+	private String moveInDate;
+	private String moveOutDate;
+	private String roomPrice;
+	private String orderNum;
 	
+	public String getOrderNum() {
+		return orderNum;
+	}
+	public void setOrderNum(String orderNum) {
+		this.orderNum = orderNum;
+	}
+	public String getRoomPrice() {
+		return roomPrice;
+	}
+	public void setRoomPrice(String roomPrice) {
+		this.roomPrice = roomPrice;
+	}
+	public String getMoveInDate() {
+		return moveInDate;
+	}
+	public void setMoveInDate(String moveInDate) {
+		this.moveInDate = moveInDate;
+	}
+	public String getMoveOutDate() {
+		return moveOutDate;
+	}
+	public void setMoveOutDate(String moveOutDate) {
+		this.moveOutDate = moveOutDate;
+	}
 	public String getBuildingId() {
 		return buildingId;
 	}

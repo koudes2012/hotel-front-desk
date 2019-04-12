@@ -5,6 +5,7 @@
 
 <mapper namespace="com.oceanluxury">
 	<resultMap type="com.oceanluxury.model.RoomInfo" id="roomInfo">
+		<result property="orderNum" column="orderNum" />
 		<result property="roomId" column="roomId" />
 		<result property="floorNum" column="floorNum" />
 		<result property="roomNum" column="roomNum" />
@@ -14,7 +15,9 @@
 		<result property="roomStatus" column="roomStatus" />
 		<result property="buildingId" column="buildingId" />
 		<result property="buildingName" column="buildingName" />
-		<result property="totalFloor" column="totalFloor" />		
+		<result property="totalFloor" column="totalFloor" />
+		<result property="moveInDate" column="moveInDate" />
+		<result property="moveOutDate" column="moveOutDate" />
 	</resultMap>
 	<select id="roomSearch" parameterType="java.util.Map" resultMap="roomInfo">
 		select 
@@ -31,4 +34,43 @@
 			</when>
 		</choose>
 	</select>
+	
+	<update id="updateRoomInfo" parameterType="java.util.Map">
+		update room_info set roomStatus=#{roomStatus} where roomId=#{roomId}
+	</update>
+	
+	<select id="checkInOutSearch" parameterType="java.util.Map" resultMap="roomInfo">
+		SELECT
+	        a.roomId
+	        ,a.roomName
+	        ,date_format(b.moveInDate, '%Y-%m-%d') moveInDate
+	        ,date_format(b.moveOutDate, '%Y-%m-%d') moveOutDate
+	        ,a.roomStatus
+	        ,c.categoryDescr roomType
+	        ,b.orderNum
+	    FROM
+	        room_info a
+	            LEFT JOIN reservation b
+	                ON a.roomId = b.roomId
+	                AND b.reserStatus = #{reserStatus}
+	                AND a.roomStatus IN ('1', '2')
+	                AND (
+	                    b.moveInDate <![CDATA[ <= ]]> STR_TO_DATE(
+	                        #{systemDate}
+	                		,'%d-%m-%Y'
+	                    )
+	                    AND b.moveOutDate <![CDATA[ >= ]]> STR_TO_DATE(
+	                        #{systemDate}
+	                        ,'%d-%m-%Y'
+	                    )
+	                )
+	            LEFT JOIN category c
+	                ON a.roomType = c.categoryId
+	                AND c.categoryType = 'RoomType'
+	        <if test="roomType!=null and roomType!=''">
+				WHERE a.roomType = #{roomType}
+			</if>
+	            ORDER BY a.roomId
+	</select>
+    
 </mapper>

@@ -33,7 +33,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="w3_agileits_main_grid w3l_main_grid">
 					<div class="agileits_grid">
 						<h5>UserName or E-mail </h5>
-							<input type="email" name="Email" required="">
+							<input type="email" name="email" required="">
 					</div>
 				</div>
 				<div class="agileits_main_grid w3_agileits_main_grid">

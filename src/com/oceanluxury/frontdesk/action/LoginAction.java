@@ -1,6 +1,7 @@
 package com.oceanluxury.frontdesk.action;
 
 import com.oceanluxury.frontdesk.service.imp.UserServiceImp;
+import com.oceanluxury.model.User;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class LoginAction extends ActionSupport {
@@ -35,9 +36,9 @@ public class LoginAction extends ActionSupport {
 	 */
     @Override
     public String execute() throws Exception {
-    	Boolean checkFlg = userService.loginCheck(username, password);
-    	if (checkFlg == false) {
-//    		return ERROR;
+    	User user = userService.loginCheck(username, password);
+    	if (user == null) {
+    		return ERROR;
         }
     	
         return SUCCESS;

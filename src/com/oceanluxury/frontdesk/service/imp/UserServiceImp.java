@@ -3,10 +3,9 @@ package com.oceanluxury.frontdesk.service.imp;
 import java.util.List;
 
 import com.oceanluxury.frontdesk.dao.imp.UserDaoImp;
-import com.oceanluxury.frontdesk.service.UserService;
 import com.oceanluxury.model.User;
 
-public class UserServiceImp implements UserService {
+public class UserServiceImp {
 
     private UserDaoImp userDao;
 
@@ -18,22 +17,22 @@ public class UserServiceImp implements UserService {
         this.userDao = userDao;
     }
 
-    public boolean loginCheck(String username, String password) {
+    public User loginCheck(String username, String password) {
     	
     	List<User> userList = userDao.findUserByEmail(username);
+    	User user = null;
     	
-    	Boolean returnFlg = false;
     	if (userList != null && userList.size() == 1) {
     		String passwordFromDB = userList.get(0).getPassword();
     		
     		if (password.equals(passwordFromDB)) {
-    			returnFlg = true;
+    			user = userList.get(0);
     		}
     	}
     	
-    	return returnFlg;
+    	return user;
     }
-
+    
     public void insertUser(User user) {
     	userDao.insertUser(user);
     }

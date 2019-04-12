@@ -42,7 +42,7 @@
 				<span><i class="ion-android-cloud-outline"></i>18 °C</span>
 				<span><i class="ion-ios-location-outline"></i> 121 King Str, Melbourne Victoria</span>
 				<span><i class="fa fa-phone" aria-hidden="true"></i> 1-548-854-8898</span>
-				<span>Welcome to visit our hotel, GUEST</span>
+				<span>Welcome to visit our hotel, ${user.firstName}</span>
 			</div>
 			<div class="header-top-right">
 				<ul>
@@ -116,64 +116,6 @@
 			</div>
 		</div>
 	</div>
-	<form id="submitForm" action="" method="post">
-		<div class="check-avail">
-			<div class="container">
-				<div class="arrival date-title ">
-					<label>Arrival Date </label>
-					<div id="datepicker" class="input-group date" data-date-format="dd-mm-yyyy">
-						<input class="form-control" type="text">
-						<span class="input-group-addon"><img src="images/Home-1/date-icon.png" alt="#"></span>
-					</div>
-				</div>
-				<div class="departure date-title ">
-					<label>Departure Date </label>
-					<div id="datepickeri" class="input-group date" data-date-format="dd-mm-yyyy">
-						<input class="form-control" type="text">
-						<span class="input-group-addon"><img src="images/Home-1/date-icon.png" alt="#"></span>
-					</div>
-				</div>
-				<div class="adults date-title ">
-					<label>Adults</label>
-					
-						<div class=" carousel-search">
-							<div class="btn-group">
-								<a class="btn dropdown-toggle " data-toggle="dropdown" href="#">2</a>
-								<ul class="dropdown-menu">
-									<li><a>1</a></li>
-									<li><a>2</a></li>
-									<li><a>3</a></li>
-									<li><a>4</a></li>
-								</ul>
-							</div>
-						</div>
-					
-				</div>
-				<div class="children date-title ">
-					<label>Children</label>
-					<form>
-						<div class=" carousel-search">
-							<div class="btn-group">
-								<a class="btn dropdown-toggle " data-toggle="dropdown" href="#">2</a>
-								<ul class="dropdown-menu">
-									<li><a>1</a></li>
-									<li><a>2</a></li>
-									<li><a>3</a></li>
-									<li><a>4</a></li>
-								</ul>
-							</div>
-						</div>
-					</form>
-				</div>
-				<div class="find_btn date-title" id="availability_check">
-					<div class="text-find">
-						Check
-						<br>Availability
-					</div>
-				</div>
-			</div>
-		</div>
-	</form>
 </section>
 <!-- END / SLIDER -->
 <!--Cart Section-->
@@ -186,89 +128,70 @@
             </li>
         </ul>
         <div class="row clearfix">
+        	<form id="submitForm" action="" method="post">
             <div class="col-md-7 col-sm-12 col-xs-12">
                 <!--Billing Details-->
                 <div class="billing-details">
                     <div class="shop-form">
-                        <form method="post" action="checkout.html">
-
+                        
                             <div class="default-title"><h2>Billing Details</h2></div>
-
                             <div class="row clearfix">
 
                                 <!--Form Group-->
                                 <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                                    <div class="field-label">First name <sup>*</sup></div>
-                                    <input type="text" name="field-name" value="" placeholder="">
+                                    <div class="field-label">First name</div>
+                                    <s:textfield name="firstName" disabled="true"/>
                                 </div>
 
                                 <!--Form Group-->
                                 <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                                    <div class="field-label">Last name <sup>*</sup></div>
-                                    <input type="text" name="field-name" value="" placeholder="">
+                                    <div class="field-label">Last name</div>
+                                    <s:textfield name="lastName" disabled="true"/>
                                 </div>
 
                                 <!--Form Group-->
                                 <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                                    <div class="field-label">Company name </div>
-                                    <input type="text" name="field-name" value="" placeholder="">
+                                    <div class="field-label">Card number</div>
+                                    <s:textfield name="cardNumber" disabled="true"/>
                                 </div>
 
                                 <!--Form Group-->
                                 <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                                    <div class="field-label">Address <sup>*</sup> </div>
-                                    <input type="text" name="field-name" value="" placeholder="">
+                                    <div class="field-label">Address</div>
+                                    <s:textfield name="address" disabled="true"/>
                                 </div>
 
                                 <!--Form Group-->
                                 <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                                    <div class="field-label">Town / City <sup>*</sup> </div>
-                                    <input type="text" name="field-name" value="" placeholder="">
+                                    <div class="field-label">Town / City</div>
+                                    <s:textfield name="city" disabled="true"/>
                                 </div>
                                 <!--Form Group-->
                                 <div class="form-group col-md-6 col-sm-6 col-xs-12">
                                     <div class="field-label">Postcode / Zip</div>
-                                    <input type="text" name="field-name" value="" placeholder="">
+                                    <s:textfield name="postcode" disabled="true"/>
                                 </div>
 
 
                                 <!--Form Group-->
                                 <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                                    <div class="field-label">Email Address </div>
-                                    <input type="email" name="field-name" value="" placeholder="">
+                                    <div class="field-label">Email Address</div>
+                                    <s:textfield name="email" disabled="true"/>
                                 </div>
 
                                 <!--Form Group-->
                                 <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                                    <div class="field-label">Phone <sup>*</sup></div>
-                                    <input type="text" name="field-name" value="" placeholder="">
+                                    <div class="field-label">Phone</div>
+                                    <s:textfield name="phone" disabled="true"/>
                                 </div>
-
-
 
                                 <!--Form Group-->
                                 <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                                    <div class="field-label">Country <sup>*</sup> </div>
-                                    <select name="country">
-                                        <option>United Kingdom (UK)</option>
-                                        <option>Pakistan</option>
-                                        <option>USA</option>
-                                        <option>CANADA</option>
-                                        <option>INDIA</option>
-                                    </select>
+                                    <div class="field-label">Country</div>
+                                    <s:textfield name="country" disabled="true"/>
                                 </div>
-
-                               
-
-                                <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <div class="check-box"><input type="checkbox" name="shipping-option" id="account-option">   <label for="account-option">Creat an account?</label></div>
-                                </div>
-
                             </div>
-                        </form>
-
                     </div>
-
                 </div><!--End Billing Details-->
             </div>
 
@@ -278,46 +201,44 @@
                     <div class="default-title"><h2>Your Order</h2></div>
                     <!--Orders Table-->
                     <ul class="orders-table">
-                        <li class="table-header clearfix"><div class="col">Product</div><div class="col">Total</div></li>
-                        <li class="clearfix"><div class="col st-2"><div class="prod-box">Grunge Fashion</div> </div><div class="col st-2">$15.00</div></li>
-                        <li class="clearfix"><div class="col st-4">SubTotal</div><div class="col st-4">$15.00</div></li>
-                        <li class="clearfix total"><div class="col st-3">Order Total</div><div class="col st-3">$15.00</div></li>
+                        <li class="table-header clearfix"><div class="col">Room</div><div class="col">Quantity</div><div class="col">Total</div></li>
+                        <s:iterator id="reservation" value="reservationList" status="status">
+                        	<s:set var="roomTypeName" value="#reservation.roomTypeName" />
+						    <s:set var="quantity" value="#reservation.quantity" />
+						    <s:set var="totalMoney" value="#reservation.totalMoney" />
+                        	<li class="clearfix">
+                        		<div class="col st-2"><div class="prod-box"><s:property value="#roomTypeName" /></div> </div>
+                        		<div class="col st-2"><s:property value="#quantity" /></div>
+                        		<div class="col st-2"><s:property value="#totalMoney" /></div>
+                        	</li>
+						</s:iterator>
+                        <s:hidden name="orderTotal" />
+                        <li class="clearfix total"><div class="col st-3">Order Total</div><div class="col st-3"><s:property value="orderTotal" /></div></li>
                     </ul>
 
-                    <div class="coupon-code">
-                        <div class="form-group">
-                            <div class="field-group"><input type="text" name="code" value="" placeholder="Enter coupon code if have" required=""></div>
-                            <div class="field-group btn-field"><button type="submit" class="theme-btn btn-style-one">Apply</button></div>
-                        </div>
-                    </div>
-
                 </div><!--End Your Order-->
-
 
                 <!--Place Order-->
                 <div class="place-order">
                     <div class="default-title"><h2>Payment Method</h2></div>
-
 
                     <!--Payment Options-->
                     <div class="payment-options">
                         <ul>
                             <li>
                                 <div class="radio-option">
-                                    <input type="radio" name="payment-group" id="payment-1">
-                                    <label for="payment-1"><strong>Cheque Payment</strong><span class="small-text">Please send your cheque to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</span></label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="radio-option">
-                                    <input type="radio" name="payment-group" id="payment-3">
-                                    <label for="payment-3"><strong>Paypal</strong></label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="radio-option">
-                                    <input type="radio" name="payment-group" id="payment-2">
-                                    <label for="payment-2"><strong>Direct Bank Transfer</strong></label>
+	                                <s:if test='paymentMethod == "1"'>
+										<input type="radio" name="paymentMethod" id="payment-1" value="1" checked="checked" disabled="disabled">
+	                                    <label for="payment-1"><strong>Cheque Payment</strong></label>
+									</s:if>
+									<s:elseif  test='paymentMethod == "2"'>
+										<input type="radio" name="paymentMethod" id="payment-3" value="2" checked="checked" disabled="disabled">
+	                                    <label for="payment-3"><strong>Paypal</strong></label>
+									</s:elseif>
+									<s:elseif  test='paymentMethod == "3"'>
+										<input type="radio" name="paymentMethod" id="payment-2" value="3" checked="checked" disabled="disabled">
+	                                    <label for="payment-2"><strong>Direct Bank Transfer</strong></label>
+									</s:elseif>
                                 </div>
                             </li>
                         </ul>
@@ -325,7 +246,7 @@
 
                 </div><!--End Place Order-->
             </div>
-
+			</form>
         </div>
 
     </div>
@@ -378,11 +299,11 @@
 <!-- Custom jQuery -->
 <script type="text/javascript" src="js/sky.js"></script>
 <script type="text/javascript">
-	$(document).ready(function(){
-		$("#place_order").click(function(){
-			$("#submitForm").attr("action", "custPlaceOrder").submit();
-		});
+$(document).ready(function(){
+	$("#place_order").click(function(){
+		$("#submitForm").attr("action", "custPlaceOrder").submit();
 	});
+});
 </script>
 
 </body>

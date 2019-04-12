@@ -40,7 +40,7 @@
                     <div class="content">
                         <h2>Jigsaw box alphabets</h2>
                         <p>$ 85 &nbsp;&nbsp;&nbsp; buy:
-                        <input type="text" value="" style="width:30px; border:1px solid #000000"></p>
+                        <input type="text" value="" style="width:40px; border:1px solid #000000"></p>
                     </div>
                 </div>
             </div>
@@ -52,7 +52,7 @@
                     <div class="content">
                         <h2>Jigsaw box alphabets</h2>
                         <p>$ 85 &nbsp;&nbsp;&nbsp; buy:
-                        <input type="text" value="" style="width:30px; border:1px solid #000000"></p>
+                        <input type="text" value="" style="width:40px; border:1px solid #000000"></p>
                     </div>
                 </div>
             </div>
@@ -64,7 +64,7 @@
                     <div class="content">
                         <h2>Jigsaw box alphabets</h2>
                         <p>$ 85 &nbsp;&nbsp;&nbsp; buy:
-                        <input type="text" value="" style="width:30px; border:1px solid #000000"></p>
+                        <input type="text" value="" style="width:40px; border:1px solid #000000"></p>
                     </div>
                 </div>
             </div>
@@ -76,7 +76,7 @@
                     <div class="content">
                         <h2>Jigsaw box alphabets</h2>
                         <p>$ 85 &nbsp;&nbsp;&nbsp; buy:
-                        <input type="text" value="" style="width:30px; border:1px solid #000000"></p>
+                        <input type="text" value="" style="width:40px; border:1px solid #000000"></p>
                     </div>
                 </div>
             </div>

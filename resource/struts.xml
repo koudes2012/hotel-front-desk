@@ -18,6 +18,10 @@
 			<result name="success">/page/frontdesk/house_list.jsp</result>
 			<result name="error">/page/frontdesk/house_list.jsp</result>
 		</action>
+		<action name="orderSearchPop" class="orderSearchPopAction">
+			<result name="success">/page/frontdesk/house_edit.jsp</result>
+			<result name="error">/page/frontdesk/house_edit.jsp</result>
+		</action>
 		<action name="roomStatus" class="roomStatusAction">
 			<result name="success">/page/frontdesk/loupanchart.jsp</result>
 			<result name="error">/page/frontdesk/loupanchart.jsp</result>
@@ -25,6 +29,10 @@
 		<action name="roomStatusPop" class="roomStatusPopAction">
 			<result name="success">/page/frontdesk/roomStatusPop.jsp</result>
 			<result name="error">/page/frontdesk/loupanchart.jsp</result>
+		</action>
+		<action name="taskSearch" class="taskSearchAction">
+			<result name="success">/page/frontdesk/task_list.jsp</result>
+			<result name="error">/page/frontdesk/task_list.jsp</result>
 		</action>
 		<action name="checkInOut" class="checkInOutAction">
 			<result name="success">/page/frontdesk/checkInOut.jsp</result>

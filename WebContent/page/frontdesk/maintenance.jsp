@@ -172,31 +172,6 @@
 							<s:select name="roomType" id="roomType" cssStyle="ui_select01"
 								list="#{'':'--choose--','single':'single','double':'double'}"
 								listKey="key" listValue="value"></s:select>
-							栋号
-							 <select name="fyDhCode" id="fyDh" class="ui_select01">
-                                <option value="">--请选择--</option>
-                            </select>
-							户型
-							<select name="fyHxCode" id="fyHx" class="ui_select01">
-                                <option value="">--请选择--</option>
-                                <option value="76">一室一厅一卫</option>
-                                <option value="10">两室一厅一卫</option>
-                                <option value="14">三室一厅一卫</option>
-                                <option value="71">三室两厅一卫</option>
-                            </select>
-							状态
-							<select name="fyStatus" id="fyStatus" class="ui_select01">
-                                <option value="">--请选择--</option>
-                                <option value="26">在建</option>
-                                <option value="25">建成待租</option>
-                                <option value="13">已配租</option>
-                                <option value="12">已租赁</option>
-                                <option value="24">腾退待租</option>
-                                <option value="23">欠费</option>
-                                <option value="27">其他</option>
-                            </select>
-
-							座落&nbsp;&nbsp;<input type="text" id="fyZldz" name="fyZldz" class="ui_input_txt02" />
 						</div>
 						<div id="box_bottom">
 							<input type="button" value="Search" class="ui_input_btn01" onclick="search();" />
@@ -208,61 +183,31 @@
 				<div class="ui_tb">
 					<table class="table" cellspacing="0" cellpadding="0" width="100%" align="center" border="0">
 						<tr>
-							<th width="30"><input type="checkbox" id="all" onclick="selectOrClearAllCheckbox(this);" />
-							</th>
 							<th>Room</th>
+							<th>Room Type</th>
 							<th>Check In Date</th>
 							<th>Check Out Date</th>
 							<th>Operation</th>
 						</tr>
-						<s:iterator id="roomOrder" value="roomOrderList" status="status">
-						    <s:set var="orderNum" value="#roomOrder.orderNum" />
-						    <s:set var="custName" value="#roomOrder.custName" />
-						    <s:set var="identityType" value="#roomOrder.identityType" />
-						    <s:set var="identityNum" value="#roomOrder.identityNum" />
-						    <s:set var="telNum" value="#roomOrder.telNum" />
-						    <s:set var="custAddress" value="#roomOrder.custAddress" />
-						    <s:set var="roomType" value="#roomOrder.roomType" />
-						    <s:set var="moveInDate" value="#roomOrder.moveInDate" />
-						    <s:set var="moveOutDate" value="#roomOrder.moveOutDate" />
+						<s:iterator id="roomInfo" value="roomInfoList" status="status">
+						    <s:set var="roomId" value="#roomInfo.roomId" />
+						    <s:set var="roomName" value="#roomInfo.roomName" />
+						    <s:set var="moveInDate" value="#roomInfo.moveInDate" />
+						    <s:set var="moveOutDate" value="#roomInfo.moveOutDate" />
+						    <s:set var="roomStatus" value="#roomInfo.roomStatus" />
+						    <s:set var="roomType" value="#roomInfo.roomType" />
+						    <s:set var="orderNum" value="#roomInfo.orderNum" />
 						    <tr>
-						        <td><input type="checkbox" name="IDCheck" value="<s:property value="#orderNum" />" class="acb" /></td>
-						        <td><s:property value="#custName" /></td>
-						        <td><s:property value="#identityType" /></td>
-						        <td><s:property value="#identityNum" /></td>
+						        <td><s:property value="#roomName" /></td>
+						        <td><s:property value="#roomType" /></td>
+						        <td><s:property value="#moveInDate" /></td>
+						        <td><s:property value="#moveOutDate" /></td>
 						        <td>
 									<a href="maintenancePop?fyID=<s:property value="#orderNum" />" class="edit">Maintenance</a>
 								</td>
 						    </tr>
 						</s:iterator>
 					</table>
-				</div>
-				<div class="ui_tb_h30">
-					<div class="ui_flt" style="height: 30px; line-height: 30px;">
-						Total
-						<span class="ui_txt_bold04">90</span>
-						records, current page is
-						<span class="ui_txt_bold04">1
-						/
-						9</span>
-					</div>
-					<div class="ui_frt">
-						<!--    如果是第一页，则只显示下一页、尾页 -->
-						
-							<input type="button" value="Fisrt" class="ui_input_btn01" />
-							<input type="button" value="Previous" class="ui_input_btn01" />
-							<input type="button" value="Next" class="ui_input_btn01"
-								onclick="jumpNormalPage(2);" />
-							<input type="button" value="Last" class="ui_input_btn01"
-								onclick="jumpNormalPage(9);" />
-						
-						
-						
-						<!--     如果是最后一页，则只显示首页、上一页 -->
-						
-						Turn to<input type="text" id="jumpNumTxt" class="ui_input_txt01" />page
-							 <input type="button" class="ui_input_btn01" value="Turn" onclick="jumpInputPage(9);" />
-					</div>
 				</div>
 			</div>
 		</div>
