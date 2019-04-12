@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.oceanluxury">
+	<resultMap type="com.oceanluxury.model.Reservation" id="reservation">
+		<result property="orderNum" column="orderNum" />
+		<result property="roomId" column="roomId" />
+		<result property="roomPrice" column="roomPrice" />
+		<result property="moveInDate" column="moveInDate" />
+		<result property="moveOutDate" column="moveOutDate" />
+		<result property="availableNum" column="availableNum" />
+		<result property="roomType" column="roomType" />
+		<result property="roomTypeName" column="roomTypeName" />
+		<result property="payment" column="payment" />
+		<result property="reserStatus" column="reserStatus" />
+		<result property="roomName" column="roomName" />
+		<result property="roomStatus" column="roomStatus" />
+		<result property="moveInDateStr" column="moveInDateStr" />
+		<result property="moveOutDateStr" column="moveOutDateStr" />
+	</resultMap>
+	<select id="checkAvailability" parameterType="java.util.Map" resultMap="reservation">
+		SELECT
+	        MIN(a.roomId) roomId
+	        ,COUNT(*) availableNum
+	        ,a.roomType roomType
+	        ,c.categoryDescr roomTypeName
+	        ,d.categoryDescr roomPrice
+	    FROM
+	        room_info a
+	            LEFT JOIN
+	            (
+	                SELECT
+	                        roomId
+	                    FROM
+	                        reservation
+	                    WHERE
+	                        moveInDate <![CDATA[ <= ]]> STR_TO_DATE(
+	                            #{moveOutDate}
+	                            ,'%d-%m-%Y'
+	                        )
+	                        AND moveOutDate <![CDATA[ >= ]]> STR_TO_DATE(
+	                            #{moveInDate}
+	                            ,'%d-%m-%Y'
+	                        )
+	                        AND reserStatus <![CDATA[ <> ]]> '3'
+	                    GROUP BY
+	                        roomId
+	            ) b
+	                ON a.roomId = b.roomId
+	            LEFT JOIN category c
+	                ON a.roomType = c.categoryId
+	                AND c.categoryType = 'RoomType'
+	            LEFT JOIN category d
+	                ON a.roomType = d.categoryId
+	                AND d.categoryType = 'Price'
+	    WHERE
+	        b.roomId IS null
+	    GROUP BY
+	        a.roomType
+	        ,c.categoryDescr
+	        ,d.categoryDescr
+	</select>
+	
+	<select id="getAvailabileRoom" parameterType="java.util.Map" resultMap="reservation">
+		SELECT
+		        a.roomId
+		        ,a.roomName
+		    FROM
+		        room_info a
+		            LEFT JOIN (
+		                SELECT
+		                        roomId
+		                    FROM
+		                        reservation
+		                    WHERE
+		                        moveInDate <![CDATA[ <= ]]> STR_TO_DATE(
+		                            #{moveOutDate}
+		                            ,'%d-%m-%Y'
+		                        )
+		                        AND moveOutDate <![CDATA[ >= ]]> STR_TO_DATE(
+		                            #{moveInDate}
+		                            ,'%d-%m-%Y'
+		                        )
+		                        AND reserStatus <![CDATA[ <> ]]> '3'
+		                    GROUP BY
+		                        roomId
+		            ) b
+		                ON a.roomId = b.roomId
+		    WHERE
+		        b.roomId IS null
+		        AND a.roomType = #{roomType} 
+		    <if test="quantity!=null and quantity!=''">
+				limit #{quantity}
+			</if>
+	</select>
+	
+	<insert id="insertReservation" parameterType="reservation">
+		insert into reservation
+			(roomId, roomPrice, moveInDate, moveOutDate, payment, reserStatus) 
+		values 
+			(#{roomId},#{roomPrice},#{moveInDate},#{moveOutDate},#{payment},#{reserStatus})
+	</insert>
+	
+	<select id="orderSearch" parameterType="java.util.Map" resultMap="reservation">
+    	SELECT
+    		a.orderNum
+	        ,a.roomId
+	        ,b.roomName
+	        ,a.roomPrice
+	        ,date_format(a.moveInDate,'%Y-%m-%d') AS moveInDateStr
+	        ,date_format(a.moveOutDate, '%Y-%m-%d') AS moveOutDateStr
+	        ,b.roomStatus
+	        ,b.roomType
+	        ,c.categoryDescr AS roomTypeName
+	        ,d.categoryDescr AS reserStatus
+	    FROM
+	        reservation a
+	            LEFT JOIN room_info b
+	                ON a.roomId = b.roomId
+	            LEFT JOIN category c
+	                ON b.roomType = c.categoryId
+	                AND c.categoryType = 'RoomType'
+	            LEFT JOIN category d
+	                ON a.reserStatus = d.categoryId
+	                AND d.categoryType = 'ReservationStatus'
+	    WHERE
+	        a.moveOutDate >= STR_TO_DATE(
+	            #{systemDate}
+	            ,'%d-%m-%Y'
+	        )
+        <if test="roomType!=null and roomType!=''">
+			AND b.roomType = #{roomType}
+		</if>
+	    ORDER BY b.roomId
+	</select>
+	
+	<delete id="deleteReservation" parameterType="java.util.Map">
+		delete from reservation where orderNum = #{orderNum}
+	</delete>
+	
+	<select id="getReservation" parameterType="java.util.Map" resultMap="reservation">
+		SELECT 
+			a.orderNum
+			,a.roomId
+			,a.roomPrice
+			,a.moveInDate
+			,a.moveOutDate
+			,a.payment
+			,a.reserStatus
+			,date_format(a.moveInDate,'%d-%m-%Y') AS moveInDateStr
+	        ,date_format(a.moveOutDate, '%d-%m-%Y') AS moveOutDateStr
+	        ,b.roomName
+		FROM 
+			reservation a
+	    LEFT JOIN room_info b
+	        ON a.roomId = b.roomId
+      	WHERE
+      		a.orderNum = #{orderNum}
+      	AND
+	        a.moveInDate <![CDATA[ <= ]]> STR_TO_DATE(
+	            #{systemDate}
+	            ,'%d-%m-%Y'
+	        )
+	        AND a.moveOutDate <![CDATA[ >= ]]> STR_TO_DATE(
+	            #{systemDate}
+	            ,'%d-%m-%Y'
+	        )
+	</select>
+	
+	<update id="updateReservation" parameterType="java.util.Map">
+		update reservation set roomId=#{roomId}, reserStatus=#{reserStatus} where orderNum=#{orderNum}
+	</update>
+	
+</mapper>
