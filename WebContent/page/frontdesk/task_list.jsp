@@ -30,7 +30,7 @@
 	        'hideOnOverlayClick' : false,
 	        'showCloseButton' : false,
 	        'onClosed' : function() { 
-	        	window.location.href = 'orderSearch';
+	        	window.location.href = 'taskSearch';
 	        }
 	    });
 	});
@@ -38,12 +38,17 @@
 	function search(){
 		$("#submitForm").attr("action", "taskSearch").submit();
 	}
-
-	function del(orderNum){
-		if(orderNum == '') return;
-		if(confirm("Are you sure to delete ?")){
-			$("#submitForm").attr("action", "orderSearch!del?orderNum=" + orderNum).submit();			
+	
+	function close(taskId){
+		if(taskId == '') return;
+		if(confirm("Are you sure to close the task ?")){
+			$("#submitForm").attr("action", "taskSearch!close?taskId=" + taskId).submit();			
 		}
+	}
+	
+	function detail(taskId){
+		if(taskId == '') return;
+		$("#submitForm").attr("action", "taskSearch!close?taskId=" + taskId).submit();			
 	}
 </script>
 <style>
@@ -60,9 +65,13 @@
 					<div id="box_border">
 						<div id="box_top">Task Search</div>
 						<div id="box_center">
-							RoomType
-							<s:select name="roomType" id="roomType" cssStyle="ui_select01"
-								list="#{'':'--choose--','1':'single','2':'double'}"
+							Task Type
+							<s:select name="taskType" id="taskType" cssStyle="ui_select01"
+								list="#{'':'--choose--','1':'Morning Call','2':'Taxi Call','3':'Others','4':'Housekeeping','5':'Maintenance','6':'Kiosk'}"
+								listKey="key" listValue="value"></s:select>
+							Task Status
+							<s:select name="taskStatus" id="taskStatus" cssStyle="ui_select01"
+								list="#{'':'--choose--','1':'CREATE','2':'CLOSE'}"
 								listKey="key" listValue="value"></s:select>
 						</div>
 						<div id="box_bottom">
@@ -76,39 +85,44 @@
 				<div class="ui_tb">
 					<table class="table" cellspacing="0" cellpadding="0" width="100%" align="center" border="0">
 						<tr>
-							<th width="30"><input type="checkbox" id="all" onclick="selectOrClearAllCheckbox(this);" />
-							</th>
 							<th>Room</th>
-							<th>Room Type</th>
-							<th>Price</th>
-							<th>Check In Date</th>
-							<th>Check Out Date</th>
+							<th>Task Type</th>
+							<th>Start Date</th>
+							<th>Time</th>
+							<th>End Date</th>
+							<th>Description</th>
 							<th>Status</th>
 							<th>Operation</th>
 						</tr>
-						<s:iterator id="reservation" value="reservationList" status="status">
-							<s:set var="orderNum" value="#reservation.orderNum" />
-						    <s:set var="roomId" value="#reservation.roomId" />
-						    <s:set var="roomName" value="#reservation.roomName" />
-						    <s:set var="roomTypeName" value="#reservation.roomTypeName" />
-						    <s:set var="roomType" value="#reservation.roomType" />
-						    <s:set var="roomPrice" value="#reservation.roomPrice" />
-						    <s:set var="moveInDateStr" value="#reservation.moveInDateStr" />
-						    <s:set var="moveOutDateStr" value="#reservation.moveOutDateStr" />
-						    <s:set var="roomStatus" value="#reservation.roomStatus" />
-						    <s:set var="reserStatus" value="#reservation.reserStatus" />
+						<s:iterator id="task" value="taskList" status="status">
+							<s:set var="taskId" value="#task.taskId" />
+						    <s:set var="taskType" value="#task.taskType" />
+						    <s:set var="taskTypeName" value="#task.taskTypeName" />
+						    <s:set var="taskDesc" value="#task.taskDesc" />
+						    <s:set var="assignedDateStr" value="#task.assignedDateStr" />
+						    <s:set var="assignedTime" value="#task.assignedTime" />
+						    <s:set var="clearanceDateStr" value="#task.clearanceDateStr" />
+						    <s:set var="taskStatus" value="#task.taskStatus" />
+						    <s:set var="taskStatusName" value="#task.taskStatusName" />
+						    <s:set var="roomId" value="#task.roomId" />
+						    <s:set var="roomName" value="#task.roomName" />
 						    <tr>
-						    <td><input type="checkbox" name="IDCheck" value="<s:property value="#orderNum" />" class="acb" /></td>
 						        <td><s:property value="#roomName" /></td>
-						        <td><s:property value="#roomTypeName" /></td>
-						        <td><s:property value="#roomPrice" /></td>
-						        <td><s:property value="#moveInDateStr" /></td>
-						        <td><s:property value="#moveOutDateStr" /></td>
-						        <td><s:property value="#reserStatus" /></td>
+						        <td><s:property value="#taskTypeName" /></td>
+						        <td><s:property value="#assignedDateStr" /></td>
+						        <td><s:property value="#assignedTime" /></td>
+						        <td><s:property value="#clearanceDateStr" /></td>
 						        <td>
-									<a href="orderSearchPop?orderNum=<s:property value="#orderNum"/>&roomType=<s:property value="#roomType"/>" class="edit">Edit</a> 
-									<span>&nbsp;&nbsp;&nbsp;</span>
-									<a href="javascript:del('<s:property value="#orderNum" />');">Delete</a>
+						        	<s:if test='taskType == "6"'>
+			                        	<a href='taskPop?taskId=<s:property value="#taskId"/>' class="edit">Detail</a>
+			                        </s:if>
+			                        <s:else>
+			                        	<s:property value="#taskDesc" />
+			                        </s:else>
+						        </td>
+						        <td><s:property value="#taskStatusName" /></td>
+						        <td>
+									<a href="javascript:close('<s:property value="#taskId" />');">Close</a> 
 								</td>
 						    </tr>
 						</s:iterator>

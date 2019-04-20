@@ -34,6 +34,10 @@
 			<result name="success">/page/frontdesk/task_list.jsp</result>
 			<result name="error">/page/frontdesk/task_list.jsp</result>
 		</action>
+		<action name="taskPop" class="taskPopAction">
+			<result name="success">/page/frontdesk/taskPop.jsp</result>
+			<result name="error">/page/frontdesk/taskPop.jsp</result>
+		</action>
 		<action name="checkInOut" class="checkInOutAction">
 			<result name="success">/page/frontdesk/checkInOut.jsp</result>
 			<result name="error">/page/frontdesk/index.jsp</result>
@@ -56,6 +60,7 @@
 		</action>
 		<action name="kiosk" class="kioskAction">
 			<result name="success">/page/frontdesk/kiosk.jsp</result>
+			<result name="input">/page/frontdesk/kiosk.jsp</result>
 			<result name="error">/page/frontdesk/index.jsp</result>
 		</action>
 		

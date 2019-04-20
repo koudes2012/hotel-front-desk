@@ -81,7 +81,7 @@
 				            listKey="roomId"
 				            listValue="roomName"
 				            emptyOption="false"
-				            value="3"
+				            value=""
 				            />
 					</td>
 				</tr>

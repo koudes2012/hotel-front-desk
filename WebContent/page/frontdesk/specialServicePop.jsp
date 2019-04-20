@@ -24,13 +24,16 @@
 <script type="text/javascript" src="js/jquery-ui.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		/*
-		 * 提交
-		 */
-		$("#submitbutton").click(function() {
-			if(validateForm()){
-				checkFyFhSubmit();
-			}
+		$("#morningCall").click(function(){
+			$("#submitForm").attr("action", "specialServicePop!morningCall").submit();
+		});
+		
+		$("#taxiCall").click(function(){
+			$("#submitForm").attr("action", "specialServicePop!taxiCall").submit();
+		});
+		
+		$("#remark").click(function(){
+			$("#submitForm").attr("action", "specialServicePop!remark").submit();
 		});
 		
 		/*
@@ -46,6 +49,7 @@
 			/**  关闭弹出iframe  **/
 			window.parent.$.fancybox.close();
 		}
+
 	});
 	
 	$(function() {
@@ -82,18 +86,18 @@
 				<tr>
 					<td class="ui_text_rt" width="80">Date</td>
 					<td class="ui_text_lt">
-						<input class="date" id="datepicker" name="morningCallDate" type="text" value="mm/dd/yyyy" onfocus="this.value = '';" >
+						<s:textfield name="morningCallDate" class="date" id="datepicker" onfocus="this.value = '';"/>
 					</td>
 					<td class="ui_text_rt" width="80">Time</td>
 					<td class="ui_text_lt">
-						<input type="time" name="morningCallTime" placeholder=" ">
+						<input type="time" name="morningCallTime" value="<s:property value="morningCallTime"/>">
 					</td>
 				</tr>
 				<tr>
 					<td>&nbsp;</td>
 					<td class="ui_text_lt">
-						&nbsp;<input id="submitbutton" type="button" value="Confirm" class="ui_input_btn01"/>
-						&nbsp;<input id="cancelbutton" type="button" value="Cancel" class="ui_input_btn01"/>
+						&nbsp;<input id="morningCall" type="button" value="Confirm" class="ui_input_btn01"/>
+						&nbsp;<input id="cancelMorningCall" type="button" value="Cancel" class="ui_input_btn01"/>
 					</td>
 				</tr>
 				<tr>
@@ -106,24 +110,24 @@
 				<tr>
 					<td class="ui_text_rt" width="80">Date</td>
 					<td class="ui_text_lt">
-						<input class="date" id="datepicker1" name="Text" type="taxiCallDate" value="mm/dd/yyyy" onfocus="this.value = '';" >
+						<s:textfield name="taxiCallDate" class="date" id="datepicker1" onfocus="this.value = '';"/>
 					</td>
 					<td class="ui_text_rt" width="80">Time</td>
 					<td class="ui_text_lt">
-						<input type="time" name="taxiCallTime" placeholder=" ">
+						<input type="time" name="taxiCallTime" value="<s:property value="taxiCallTime"/>">
 					</td>
 				</tr>
 				<tr>
 					<td class="ui_text_rt">Location</td>
 					<td class="ui_text_lt" colspan="3">
-						<textarea name="taxiLocation" rows="5" cols="70"></textarea>
+						<textarea name="taxiLocation" rows="5" cols="70"><s:property value="taxiLocation"/></textarea>
 					</td>
 				</tr>
 				<tr>
 					<td>&nbsp;</td>
 					<td class="ui_text_lt">
-						&nbsp;<input id="submitbutton" type="button" value="Confirm" class="ui_input_btn01"/>
-						&nbsp;<input id="cancelbutton" type="button" value="Cancel" class="ui_input_btn01"/>
+						&nbsp;<input id="taxiCall" type="button" value="Confirm" class="ui_input_btn01"/>
+						&nbsp;<input id="cancelTaxiCall" type="button" value="Cancel" class="ui_input_btn01"/>
 					</td>
 				</tr>
 				<tr>
@@ -136,14 +140,14 @@
 				<tr>
 					<td class="ui_text_rt">Remark</td>
 					<td class="ui_text_lt" colspan="3">
-						<textarea name="remark" rows="5" cols="70"></textarea>
+						<textarea name="remark" rows="5" cols="70"><s:property value="remark"/></textarea>
 					</td>
 				</tr>
 				<tr>
 					<td>&nbsp;</td>
 					<td class="ui_text_lt">
-						&nbsp;<input id="submitbutton" type="button" value="Confirm" class="ui_input_btn01"/>
-						&nbsp;<input id="cancelbutton" type="button" value="Cancel" class="ui_input_btn01"/>
+						&nbsp;<input id="remark" type="button" value="Confirm" class="ui_input_btn01"/>
+						&nbsp;<input id="cancelRemark" type="button" value="Cancel" class="ui_input_btn01"/>
 					</td>
 				</tr>
 			</table>

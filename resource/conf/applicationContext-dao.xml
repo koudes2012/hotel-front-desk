@@ -21,4 +21,7 @@
 	<bean id="taskDao" class="com.oceanluxury.frontdesk.dao.imp.TaskDaoImp">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 	</bean>
+	<bean id="itemDao" class="com.oceanluxury.frontdesk.dao.imp.ItemDaoImp">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
 </beans>

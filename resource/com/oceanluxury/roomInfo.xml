@@ -73,4 +73,9 @@
 	            ORDER BY a.roomId
 	</select>
     
+    <select id="getRoomPullDownList" parameterType="java.util.Map" resultMap="roomInfo">
+		select 
+			a.*
+		from room_info a
+	</select>
 </mapper>

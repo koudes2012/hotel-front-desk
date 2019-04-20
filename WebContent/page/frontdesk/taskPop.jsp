@@ -24,14 +24,6 @@
 <script type="text/javascript" src="js/jquery-ui.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$("#housekeeping").click(function(){
-			$("#submitForm").attr("action", "maintenancePop!housekeeping").submit();
-		});
-		
-		$("#maintenance").click(function(){
-			$("#submitForm").attr("action", "maintenancePop!maintenance").submit();
-		});
-		
 		/*
 		 * 取消
 		 */
@@ -45,19 +37,15 @@
 			/**  关闭弹出iframe  **/
 			window.parent.$.fancybox.close();
 		}
-	});
-	
-	$(function() {
-		$( "#datepicker,#datepicker1,#datepicker2" ).datepicker();
+
 	});
 </script>
 </head>
 <body>
-<form id="submitForm" name="submitForm" action="" method="post">
-	<input type="hidden" name="fyID" value="14458625716623" id="fyID"/>
+<form id="submitForm" name="submitForm" action="specialServicePop" method="post">
 	<div id="container">
 		<div id="nav_links">
-			Current Location: Service&nbsp;>&nbsp;<span style="color: #1A5CC6;">Maintenance</span>
+			Current Location: Overview&nbsp;>&nbsp;<span style="color: #1A5CC6;">Task</span>
 			<div id="page_close">
 				<a href="javascript:parent.$.fancybox.close();">
 					<img src="images/common/page_close.png" width="20" height="20" style="vertical-align: text-top;"/>
@@ -77,49 +65,26 @@
 					<td></td>
 				</tr>
 				<tr>
-					<th class="ui_text_lt" colspan="4">Housekeeping </th>
+					<th class="ui_text_lt" colspan="4">Shopping List</th>
 				</tr>
 				<tr>
-					<td class="ui_text_rt" width="80">Date</td>
-					<td class="ui_text_lt">
-						<s:textfield name="housekeepingDate" class="date" id="datepicker" onfocus="this.value = '';"/>
-					</td>
-					<td class="ui_text_rt" width="80">Time</td>
-					<td class="ui_text_lt">
-						<input type="time" name="housekeepingTime" value="<s:property value="housekeepingTime"/>">
-					</td>
+					<th width="100">Item Name</th>
+					<th width="100">Price</th>
+					<th width="100">Quantity</th>
+					<th width="100">Sub Total</th>
 				</tr>
-				<tr>
-					<td>&nbsp;</td>
-					<td class="ui_text_lt">
-						&nbsp;<input id="housekeeping" type="button" value="Confirm" class="ui_input_btn01"/>
-						&nbsp;<input id="cancelHousekeeping" type="button" value="Cancel" class="ui_input_btn01"/>
-					</td>
-				</tr>
-				<tr>
-					<td>&nbsp;</td>
-					<td></td>
-				</tr>
-				<tr>
-					<th class="ui_text_lt" colspan="4">Maintenance</th>
-				</tr>
-				<tr>
-					<td class="ui_text_rt" width="80">From</td>
-					<td class="ui_text_lt">
-						<s:textfield name="maintenanceFrom" class="date" id="datepicker1" onfocus="this.value = '';"/>
-					</td>
-					<td class="ui_text_rt" width="80">To</td>
-					<td class="ui_text_lt">
-						<s:textfield name="maintenanceTo" class="date" id="datepicker2" onfocus="this.value = '';"/>
-					</td>
-				</tr>
-				<tr>
-					<td>&nbsp;</td>
-					<td class="ui_text_lt">
-						&nbsp;<input id="maintenance" type="button" value="Confirm" class="ui_input_btn01"/>
-						&nbsp;<input id="cancelMaintenanceTo" type="button" value="Cancel" class="ui_input_btn01"/>
-					</td>
-				</tr>
+				<s:iterator id="item" value="itemList" status="status">
+					    <s:set var="itemName" value="#item.itemName" />
+					    <s:set var="itemPrice" value="#item.itemPrice" />
+					    <s:set var="number" value="#item.number" />
+					    <s:set var="amount" value="#item.amount" />
+					<tr>
+						<td class="ui_text_rt"><s:property value="#itemName" /></td>
+						<td class="ui_text_rt"><s:property value="#itemPrice" /></td>
+						<td class="ui_text_rt"><s:property value="#number" /></td>
+						<td class="ui_text_rt"><s:property value="#amount" /></td>
+					</tr>
+				</s:iterator>
 			</table>
 		</div>
 	</div>

@@ -23,7 +23,10 @@
 		<property name="roomInfoService" ref="roomInfoService"></property>
 	</bean>
 	<bean id="taskSearchAction" class="com.oceanluxury.frontdesk.action.TaskSearchAction">
-		<property name="reservationService" ref="reservationService"></property>
+		<property name="taskService" ref="taskService"></property>
+	</bean>
+	<bean id="taskPopAction" class="com.oceanluxury.frontdesk.action.TaskPopAction">
+		<property name="itemService" ref="itemService"></property>
 	</bean>
 	<bean id="checkInOutAction" class="com.oceanluxury.frontdesk.action.CheckInOutAction">
 		<property name="roomInfoService" ref="roomInfoService"></property>
@@ -34,15 +37,19 @@
 	</bean>
 	<bean id="specialServicePopAction" class="com.oceanluxury.frontdesk.action.SpecialServicePopAction">
 		<property name="roomInfoService" ref="roomInfoService"></property>
+		<property name="taskService" ref="taskService"></property>
 	</bean>
 	<bean id="maintenanceAction" class="com.oceanluxury.frontdesk.action.MaintenanceAction">
 		<property name="roomInfoService" ref="roomInfoService"></property>
 	</bean>
 	<bean id="maintenancePopAction" class="com.oceanluxury.frontdesk.action.MaintenancePopAction">
 		<property name="roomInfoService" ref="roomInfoService"></property>
+		<property name="taskService" ref="taskService"></property>
 	</bean>
 	<bean id="kioskAction" class="com.oceanluxury.frontdesk.action.KioskAction">
 		<property name="roomInfoService" ref="roomInfoService"></property>
+		<property name="itemService" ref="itemService"></property>
+		<property name="taskService" ref="taskService"></property>
 	</bean>
 	
 	<!-- ========================== Customer =========================== -->

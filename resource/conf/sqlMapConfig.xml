@@ -9,11 +9,15 @@
 		<typeAlias alias="roomInfo" type="com.oceanluxury.model.RoomInfo" />
 		<typeAlias alias="reservation" type="com.oceanluxury.model.Reservation" />
 		<typeAlias alias="payment" type="com.oceanluxury.model.Payment" />
+		<typeAlias alias="task" type="com.oceanluxury.model.Task" />
+		<typeAlias alias="item" type="com.oceanluxury.model.Item" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="com/oceanluxury/user.xml" />
 		<mapper resource="com/oceanluxury/roomInfo.xml" />
 		<mapper resource="com/oceanluxury/reservation.xml" />
 		<mapper resource="com/oceanluxury/payment.xml" />
+		<mapper resource="com/oceanluxury/task.xml" />
+		<mapper resource="com/oceanluxury/item.xml" />
 	</mappers>
 </configuration>

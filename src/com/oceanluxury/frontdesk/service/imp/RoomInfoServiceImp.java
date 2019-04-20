@@ -8,7 +8,6 @@ import java.util.Map;
 import com.oceanluxury.common.Constant;
 import com.oceanluxury.frontdesk.dao.imp.ReservationDaoImpl;
 import com.oceanluxury.frontdesk.dao.imp.RoomInfoDaoImp;
-import com.oceanluxury.model.Reservation;
 import com.oceanluxury.model.RoomInfo;
 import com.oceanluxury.util.DateUtils;
 
@@ -89,5 +88,9 @@ public class RoomInfoServiceImp {
         condition.put("roomStatus", roomStatus);
         roomInfoDao.updateRoomInfo(condition);
     }
+    
+	public List<RoomInfo> getRoomPullDownList() {
+		return roomInfoDao.getRoomPullDownList();
+	}
         
 }

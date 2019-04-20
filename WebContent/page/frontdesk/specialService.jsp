@@ -101,7 +101,7 @@
 						        <td><s:property value="#moveInDate" /></td>
 						        <td><s:property value="#moveOutDate" /></td>
 						        <td>
-									<a href="specialServicePop?roomId=<s:property value="#roomId"/>&roomName=<s:property value="#roomName"/>" class="edit">Service</a>
+									<a href="specialServicePop?roomId=<s:property value="#roomId"/>&&roomName=<s:property value="roomName"/>" class="edit">Service</a>
 								</td>
 						    </tr>
 						</s:iterator>

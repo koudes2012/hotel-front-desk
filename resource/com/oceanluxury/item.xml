@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.oceanluxury">
+	<resultMap type="com.oceanluxury.model.Item" id="item">
+		<result property="itemId" column="itemId" />
+		<result property="itemName" column="itemName" />
+		<result property="itemPrice" column="itemPrice" />
+		<result property="itemPic" column="itemPic" />
+		<result property="roomName" column="roomName" />
+		<result property="number" column="number" />
+		<result property="amount" column="amount" />
+	</resultMap>
+	
+	<insert id="insertTaskItem" parameterType="java.util.Map">
+		insert into 
+			task_item(taskId, itemId, number) 
+		values 
+			(#{taskId},#{itemId},#{number})
+	</insert>
+	
+	<insert id="insertItem" useGeneratedKeys="true" keyProperty="itemId" parameterType="item">
+		insert into 
+			itemId(itemId, itemName, itemPrice, itemPic) 
+		values 
+			(#{itemId},#{itemName},#{itemPrice},#{itemPic})
+	</insert>
+	
+	<select id="searchItem" parameterType="java.util.Map" resultMap="item">
+		SELECT
+		        a.itemId
+		        ,a.itemName
+		        ,a.itemPrice
+		        ,a.itemPic
+		    FROM
+		        item a
+		ORDER BY a.itemId
+	</select>
+	
+	<select id="getTaskDetail" parameterType="java.util.Map" resultMap="item">
+		SELECT
+			d.roomName,
+	        c.itemName,
+	        c.itemPrice,
+	        b.number,
+	        c.itemPrice*b.NUMBER as amount
+	    FROM
+	        task a
+	            LEFT JOIN task_item b
+	                ON a.taskId = b.taskId
+	            LEFT JOIN item c
+	                ON b.itemId = c.itemid
+	            LEFT JOIN room_info d
+	            	on a.roomId = d.roomId
+	    WHERE
+	        a.taskId = #{taskId}
+	</select>	
+        
+</mapper>

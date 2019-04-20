@@ -12,15 +12,63 @@
 		<result property="assignedTime" column="assignedTime" />
 		<result property="clearanceDate" column="clearanceDate" />
 		<result property="taskStatus" column="taskStatus" />
+		<result property="roomId" column="roomId" />
+		<result property="taskTypeName" column="taskTypeName" />
+		<result property="taskStatusName" column="taskStatusName" />
+		<result property="roomName" column="roomName" />
+		<result property="assignedDateStr" column="assignedDateStr" />
+		<result property="clearanceDateStr" column="clearanceDateStr" />
 	</resultMap>
+	
+	<insert id="insertTask" useGeneratedKeys="true" keyProperty="taskId" parameterType="task">
+		insert into 
+			task(taskId, taskType, taskDesc, assignedDate, assignedTime, clearanceDate, taskStatus, roomId) 
+		values 
+			(#{taskId},#{taskType},#{taskDesc},#{assignedDate},#{assignedTime},#{clearanceDate},#{taskStatus},#{roomId})
+	</insert>
+	
+	<select id="searchTask" parameterType="java.util.Map" resultMap="task">
+		SELECT
+		        a.taskId
+		        ,a.taskType
+		        ,a.taskDesc
+		        ,date_format(a.assignedDate,'%Y-%m-%d') AS assignedDateStr
+		        ,a.assignedTime
+		        ,date_format(a.clearanceDate,'%Y-%m-%d') AS clearanceDateStr
+		        ,a.taskStatus
+		        ,a.roomId
+		        ,b.roomName
+		        ,c.categoryDescr taskTypeName
+		        ,d.categoryDescr taskStatusName
+		    FROM
+		        task a
+		            LEFT JOIN room_info b
+		                ON a.roomId = b.roomId
+		            LEFT JOIN category c
+		                ON a.taskType = c.categoryId
+		                AND c.categoryType = 'TaskType'
+		            LEFT JOIN category d
+		                ON a.taskStatus = d.categoryId
+		                AND d.categoryType = 'TaskStatus'
 
-	<select id="findUserByEmail" resultMap="user">
-		select id, firstName, lastName, email, phoneNumber, password from user
-		where email = #{email}
+		WHERE 1 = 1
+		<choose>
+			<when test="taskType !=null and taskType !=''">
+				AND a.taskType = #{taskType}
+			</when>
+			<when test="taskStatus !=null and taskStatus !=''">
+				AND a.taskStatus = #{taskStatus}
+			</when>
+		</choose>
+		ORDER BY a.taskId
 	</select>
 	
-	<insert id="insertUser" parameterType="user">
-		insert into user(firstName, lastName, email, phoneNumber, password) values (#{firstName},#{lastName},#{email},#{phoneNumber},#{password})
-	</insert>
+	<delete id="deleteTask" parameterType="java.util.Map">
+		delete from task where taskId = #{taskId}
+	</delete>
+	
+	<update id="updateTask" parameterType="java.util.Map">
+		update task set taskStatus=#{taskStatus} where taskId=#{taskId}
+	</update>
 	
 </mapper>

@@ -20,6 +20,9 @@
 	</bean>
 	<bean id="taskService" class="com.oceanluxury.frontdesk.service.imp.TaskServiceImp">
 		<property name="taskDao" ref="taskDao"></property>
+		<property name="itemDao" ref="itemDao"></property>
 	</bean>
-	
+	<bean id="itemService" class="com.oceanluxury.frontdesk.service.imp.ItemServiceImp">
+		<property name="itemDao" ref="itemDao"></property>
+	</bean>
 </beans>

@@ -21,4 +21,8 @@ public class RoomInfoDaoImp extends SqlSessionDaoSupport {
 		return getSqlSession().selectList("checkInOutSearch", map);
 	}
 	
+	public List<RoomInfo> getRoomPullDownList() {
+		return getSqlSession().selectList("getRoomPullDownList");
+	}
+	
 }
