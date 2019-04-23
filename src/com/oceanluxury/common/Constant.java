@@ -30,7 +30,7 @@ public class Constant {
 	public static String taskType_1 = "1";
 	// Taxi Call
 	public static String taskType_2 = "2";
-	// Remark
+	// Others
 	public static String taskType_3 = "3";
 	// Housekeeping
 	public static String taskType_4 = "4";
@@ -38,5 +38,28 @@ public class Constant {
 	public static String taskType_5 = "5";
 	// Kiosk
 	public static String taskType_6 = "6";
+	
+	// Available
+	public static String STATUS_0 = "0";
+	// Booked
+	public static String STATUS_1 = "1";
+	// CheckIn
+	public static String STATUS_2 = "2";
+	// CheckOut
+	public static String STATUS_3 = "3";
+	// Serving
+	public static String STATUS_4 = "4";
+	// Maintaining
+	public static String STATUS_5 = "5";
+	// Others
+	public static String STATUS_6 = "6";
+	
+	public static String COLOR_STATUS_0 = "#917430";
+	public static String COLOR_STATUS_1 = "#b51d1a";
+	public static String COLOR_STATUS_2 = "#000EFF";
+	public static String COLOR_STATUS_3 = "#a5c438";
+	public static String COLOR_STATUS_4 = "#23b628";
+	public static String COLOR_STATUS_5 = "#7065D5";
+	public static String COLOR_STATUS_6 = "#7b8587";
 	
 }

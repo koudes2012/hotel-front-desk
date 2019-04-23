@@ -17,6 +17,7 @@
 	<bean id="roomInfoService" class="com.oceanluxury.frontdesk.service.imp.RoomInfoServiceImp">
 		<property name="roomInfoDao" ref="roomInfoDao"></property>
 		<property name="reservationDao" ref="reservationDao"></property>
+		<property name="taskDao" ref="taskDao"></property>
 	</bean>
 	<bean id="taskService" class="com.oceanluxury.frontdesk.service.imp.TaskServiceImp">
 		<property name="taskDao" ref="taskDao"></property>

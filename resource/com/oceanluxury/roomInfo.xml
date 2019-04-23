@@ -33,6 +33,7 @@
 				and buildingId = #{buildingId}
 			</when>
 		</choose>
+		order by a.roomId
 	</select>
 	
 	<update id="updateRoomInfo" parameterType="java.util.Map">

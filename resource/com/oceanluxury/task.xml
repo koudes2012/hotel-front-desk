@@ -71,4 +71,29 @@
 		update task set taskStatus=#{taskStatus} where taskId=#{taskId}
 	</update>
 	
+	<select id="searchRoomByTaskTypes" parameterType="java.util.Map" resultMap="task">
+		SELECT
+	        a.roomId, b.roomId as taskType
+	    FROM
+	        room_info a
+	            LEFT JOIN
+	            (
+	                SELECT
+	                        roomId
+	                    FROM
+	                        task
+	                    WHERE
+	                        taskStatus = '1'
+	                    AND taskType IN
+	                    <foreach item="item" index="index" collection="typeList" open="(" separator="," close=")">  
+							#{item}  
+						</foreach> 
+	                    GROUP BY
+	                        roomId
+	            ) b
+	                ON a.roomId = b.roomId
+	    ORDER BY
+	        a.roomId
+	</select>
+	
 </mapper>

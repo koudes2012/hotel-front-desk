@@ -25,4 +25,8 @@ public class TaskDaoImp extends SqlSessionDaoSupport {
 		getSqlSession().update("updateTask", map);
 	}
 	
+	public List<Task> searchRoomByTaskTypes(Map map) {
+		return getSqlSession().selectList("searchRoomByTaskTypes", map);
+	}
+	
 }

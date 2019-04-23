@@ -23,7 +23,7 @@
 <title>Front Desk</title>
 <script type="text/javascript">
 	
-		/** ----------------leftMenu zTree部分开始----------------  **/
+		/** ----------------leftMenu zTree start----------------  **/
 		var zTree;
 		var setting = {
 			view : {
@@ -57,7 +57,7 @@
 		$(document).ready(function() {
 			$.fn.zTree.init($("#tree"), setting, zNodes);
 			zTree = $.fn.zTree.getZTreeObj("tree");
-			// 默认展开所有节点
+			// default: expand all nodes
 			zTree.expandAll(true);
 		});
 
@@ -70,14 +70,12 @@
 			return true;
 		}
 
-		/** 左键单击 **/
+		/** left click **/
 		function onClick(e, treeId, treeNode) {
 			var fyXqCode = treeNode.getParentNode().weiduID;
 			var fyDhCode = treeNode.weiduID;
 			$("#submitForm").attr("action","roomStatus?fyXqCode="+ fyXqCode + "&fyDhCode=" + fyDhCode).submit();
 		}
-		/** ----------------leftMenu  zTree部分开始----------------  **/
-		
 		
 </script>
 	
@@ -171,13 +169,12 @@
 			<div id="main">
 				<div id="box_border">
 					<ul id="fang_type">
+						<li style="background-color: #917430;">Available</li>
 						<li style="background-color: #b51d1a;">Booked</li>
 						<li style="background-color: #000EFF;">CheckIn</li>
 						<li style="background-color: #a5c438;">CheckOut</li>
-						<li style="background-color: #7065D5;">Maintaining</li>
-						<li style="background-color: #917430;">Available</li>
 						<li style="background-color: #23b628;">Serving</li>
-						<li style="background-color: #7b8587;">Other</li>
+						<li style="background-color: #7065D5;">Maintaining</li>
 					</ul>
 				</div>
 				<table class="unit-the-table table" cellspacing="0" cellpadding="0" width="100%" align="center" border="0">
