@@ -15,11 +15,18 @@ public class KioskAction extends ActionSupport {
 	private String roomId;
 	private List<Item> itemList;
 	private List<RoomInfo> roomInfoList;
+	private String message;
 	private ItemServiceImp itemService;
     private RoomInfoServiceImp roomInfoService;
     private TaskServiceImp taskService; 
 
-    public TaskServiceImp getTaskService() {
+    public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	public TaskServiceImp getTaskService() {
 		return taskService;
 	}
 	public void setTaskService(TaskServiceImp taskService) {
@@ -63,11 +70,13 @@ public class KioskAction extends ActionSupport {
     public String execute() throws Exception {
     	this.itemList = itemService.searchItem();
     	this.roomInfoList = roomInfoService.getRoomPullDownList();
+    	message = "";
         return SUCCESS;
     }
 
     public String placeOrder() throws Exception {
 		taskService.createKioskTask(roomId, itemList);
+		message = "Your order is placed.";
         return SUCCESS;
     }
 }

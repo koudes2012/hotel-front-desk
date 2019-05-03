@@ -33,7 +33,14 @@ public class UserServiceImp {
     	return user;
     }
     
-    public void insertUser(User user) {
+    public boolean register(User user) {
+    	List<User> userList = userDao.findUserByEmail(user.getEmail());
+    	
+    	if (userList != null && userList.size() == 1) {
+    		return false;
+    	}
     	userDao.insertUser(user);
+    	
+    	return true;
     }
 }

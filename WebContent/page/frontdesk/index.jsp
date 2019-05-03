@@ -248,7 +248,7 @@
 <body onload="getDate01()">
     <div id="top">
 		<div id="top_logo">
-			<img alt="logo" src="images/common/logo.jpg" width="274" height="49" style="vertical-align:middle;">
+			<div width="274" height="49" style="vertical-align:middle;color:white">SkyLine Hotels</div>
 		</div>
 		<div id="top_links">
 			<div id="top_op">
@@ -298,7 +298,7 @@
 		 </div>
 		 <div id="left_menu_cnt">
 		 	<div id="nav_module">
-		 		<img src="images/common/module_1.png" width="210" height="58"/>
+		 		<div width="210" height="58">Front Desk System</div>
 		 	</div>
 		 	<div id="nav_resource">
 		 		<ul id="dleft_tab1" class="ztree"></ul>

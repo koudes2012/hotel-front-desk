@@ -122,14 +122,14 @@
 				<div class="arrival date-title ">
 					<label>Arrival Date </label>
 					<div id="datepicker" class="input-group date" data-date-format="dd-mm-yyyy">
-						<input class="form-control" type="text" name="arrivalDate">
+						<input class="form-control" type="text" name="arrivalDate" id="arrivalDate">
 						<span class="input-group-addon"><img src="images/Home-1/date-icon.png" alt="#"></span>
 					</div>
 				</div>
 				<div class="departure date-title ">
 					<label>Departure Date </label>
 					<div id="datepickeri" class="input-group date" data-date-format="dd-mm-yyyy">
-						<input class="form-control" type="text" name="departureDate">
+						<input class="form-control" type="text" name="departureDate" id="departureDate">
 						<span class="input-group-addon"><img src="images/Home-1/date-icon.png" alt="#"></span>
 					</div>
 				</div>
@@ -151,9 +151,16 @@
         <form id="checkoutForm" action="" method="post">
 		<s:hidden name="arrivalDate"/>
 		<s:hidden name="departureDate"/>
+        <s:hidden name="reservationListSize" value="%{reservationList.size()}" />
+       	<s:if test='%{reservationList.size()== 0}'>
+       		<h3>No rooms are avaliable, please try different date.</h3>
+       	</s:if>
+       	<s:else>
         <!--Cart Outer-->
         <div class="cart-outer">
             <div class="table-outer">
+
+            	
                 <table class="cart-table">
                     <thead class="cart-header">
                         <tr>
@@ -188,7 +195,6 @@
 	                            <td class="sub-total"><s:property value="#availableNum" /></td>
 						    </tr>
 						</s:iterator>
-						<s:hidden name="reservationListSize" value="%{reservationList.size()}" />
                     </tbody>
                 </table>
             </div>
@@ -213,6 +219,7 @@
                 </div>
             </div>
         </div>
+        </s:else>
         </form>
     </div>
 </section>
@@ -265,7 +272,14 @@
 <script type="text/javascript" src="js/sky.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
+		
 		$("#checkout_button").click(function(){
+			var orderTotal = document.getElementById("orderTotal").innerHTML;
+			if (orderTotal == '0' || orderTotal == '' ) {
+				alert('please choose at least one room');
+				return;
+			}
+			
 			$("#checkoutForm").attr("action", "custCheckout").submit();
 		});
 	});

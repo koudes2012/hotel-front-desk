@@ -30,6 +30,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<h1 class="w3layouts_head">Customer Register</h1>
 		<div class="w3layouts_main_grid">
 			<form action="custRegister" method="post" class="w3_form_post">
+				<s:if test='message != ""'>
+	       			<h3><font color='red'>${message}</font></h3>
+				</s:if>
 				<div class="w3_agileits_main_grid w3l_main_grid">
 					<div class="agileits_grid">
 						<h5>Name * </h5>
@@ -44,25 +47,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="w3_agileits_main_grid w3l_main_grid">
 					<div class="agileits_grid">
-						<h5>E-mail </h5>
+						<h5>E-mail * </h5>
 							<input type="email" name="email" placeholder="ex : myname@gmail.com" required="">
 					</div>
 				</div>
 				<div class="agileits_main_grid w3_agileits_main_grid">
 					<div class="wthree_grid">
-						<h5>Phone Number</h5>
+						<h5>Phone Number *</h5>
 						<input type="text" name="phoneNumber" placeholder="1234567890" required="">
 					</div>
 				</div>
 				<div class="agileits_w3layouts_main_grid w3ls_main_grid">
 					<div class="agileinfo_grid">
-					<h5>Password</h5>
+					<h5>Password *</h5>
 						<input type="password" name="passwordInput" required="">
 					</div>
 				</div>
 				<div class="agileits_w3layouts_main_grid w3ls_main_grid">
 					<div class="agileinfo_grid">
-					<h5>Password Confirm</h5>
+					<h5>Password Confirm *</h5>
 						<input type="password" name="passwordConfirm" required="">
 					</div>
 				</div>

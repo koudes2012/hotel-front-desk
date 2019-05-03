@@ -123,7 +123,7 @@
 <div class="checkout-page">
     <div class="container">
         <div class="row clearfix">
-        	<form id="submitForm" action="" method="post">
+        	<form id="submitForm" action="custPlaceOrder" method="post">
             <div class="col-md-7 col-sm-12 col-xs-12">
                 <!--Billing Details-->
                 <div class="billing-details">
@@ -135,31 +135,31 @@
                                 <!--Form Group-->
                                 <div class="form-group col-md-6 col-sm-6 col-xs-12">
                                     <div class="field-label">First name <sup>*</sup></div>
-                                    <input type="text" name="firstName" value="${user.firstName}" placeholder="">
+                                    <input type="text" name="firstName" value="${user.firstName}" required="">
                                 </div>
 
                                 <!--Form Group-->
                                 <div class="form-group col-md-6 col-sm-6 col-xs-12">
                                     <div class="field-label">Last name <sup>*</sup></div>
-                                    <input type="text" name="lastName" value="${user.lastName}" placeholder="">
+                                    <input type="text" name="lastName" value="${user.lastName}" required="">
                                 </div>
 
                                 <!--Form Group-->
                                 <div class="form-group col-md-12 col-sm-12 col-xs-12">
                                     <div class="field-label">Card number <sup>*</sup> </div>
-                                    <input type="text" name="cardNumber" value="" placeholder="">
+                                    <input type="text" name="cardNumber" value="" required="">
                                 </div>
 
                                 <!--Form Group-->
                                 <div class="form-group col-md-12 col-sm-12 col-xs-12">
                                     <div class="field-label">Address <sup>*</sup> </div>
-                                    <input type="text" name="address" value="" placeholder="">
+                                    <input type="text" name="address" value="" placeholder="" required="">
                                 </div>
 
                                 <!--Form Group-->
                                 <div class="form-group col-md-6 col-sm-6 col-xs-12">
                                     <div class="field-label">Town / City <sup>*</sup> </div>
-                                    <input type="text" name="city" value="" placeholder="">
+                                    <input type="text" name="city" value="" placeholder="" required="">
                                 </div>
                                 <!--Form Group-->
                                 <div class="form-group col-md-6 col-sm-6 col-xs-12">
@@ -177,7 +177,7 @@
                                 <!--Form Group-->
                                 <div class="form-group col-md-6 col-sm-6 col-xs-12">
                                     <div class="field-label">Phone <sup>*</sup></div>
-                                    <input type="text" name="phone" value="" placeholder="">
+                                    <input type="text" name="phone" value="" placeholder="" required="">
                                 </div>
 
                                 <!--Form Group-->
@@ -260,9 +260,7 @@
                             </li>
                         </ul>
                     </div>
-
-                    <button type="button" class="theme-btn btn-style-one" id="place_order">Place Order <span class="fa fa-long-arrow-right"></span></button>
-
+					<input type="submit" class="theme-btn btn-style-one" value="Place Order">
                 </div><!--End Place Order-->
             </div>
 			</form>
@@ -304,7 +302,7 @@
 <a href="#" title="sroll" class="scrollToTop"><i class="fa fa-angle-up"></i></a>
 <!--END / SROLL TOP-->
 <!-- LOAD JQUERY -->
-<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+<script src="js/jquery-2.1.3.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="js/owl.carousel.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/vit-gallery.js"></script>
@@ -317,14 +315,6 @@
 <!---<script src="http://ditu.google.cn/maps/api/js?key=AIzaSyBDyCxHyc8z9gMA5IlipXpt0c33Ajzqix4"></script>--->
 <!-- Custom jQuery -->
 <script type="text/javascript" src="js/sky.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-	$("#place_order").click(function(){
-		$("#submitForm").attr("action", "custPlaceOrder").submit();
-	});
-});
-</script>
-
 </body>
 
 </html>

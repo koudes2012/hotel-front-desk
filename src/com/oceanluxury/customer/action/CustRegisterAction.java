@@ -15,9 +15,16 @@ public class CustRegisterAction extends ActionSupport {
     private String phoneNumber;
     private String passwordInput;
     private String passwordConfirm;
+    private String message;
     private UserServiceImp userService;
 
-    public String getFirstName() {
+    public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	public String getFirstName() {
 		return firstName;
 	}
 	public void setFirstName(String firstName) {
@@ -65,13 +72,17 @@ public class CustRegisterAction extends ActionSupport {
 	 */
     @Override
     public String execute() throws Exception {
-        User user = new User();
+    	User user = new User();
         user.setFirstName(firstName);
         user.setLastName(lastName);
         user.setEmail(email);
         user.setPhoneNumber(phoneNumber);
         user.setPassword(passwordConfirm);
-    	userService.insertUser(user);
+    	boolean ret = userService.register(user);
+    	if (!ret) {
+    		this.message = "The email is already exist.";
+    		return ERROR;
+        }
         ServletActionContext.getRequest().getSession().setAttribute("user", user);
         return SUCCESS;
     }

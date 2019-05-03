@@ -30,9 +30,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<h1 class="w3layouts_head">Customer Login</h1>
 		<div class="w3layouts_main_grid">
 			<form action="custLogin" method="post" class="w3_form_post">
+				<s:if test='message != ""'>
+	       			<h3><font color='red'>${message}</font></h3>
+				</s:if>
 				<div class="w3_agileits_main_grid w3l_main_grid">
 					<div class="agileits_grid">
-						<h5>UserName or E-mail </h5>
+						<h5>E-mail </h5>
 							<input type="email" name="email" required="">
 					</div>
 				</div>

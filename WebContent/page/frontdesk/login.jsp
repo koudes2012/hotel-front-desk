@@ -38,10 +38,10 @@
 						<div id="login_tip">
 							<span id="login_err" class="sty_txt2"></span>
 						</div>
-						<div>
+						<div style="color:white">
 							UserName:<input type="text" name="username" class="username" id="name">
 						</div>
-						<div>
+						<div style="color:white">
 							Password:<input type="password" name="password" class="pwd" id="pwd" onkeypress="EnterPress(event)" onkeydown="EnterPress()">
 						</div>
 						<div id="btn_area">

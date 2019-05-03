@@ -11,8 +11,15 @@ public class CustLoginAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 	private String email;
     private String password;
+    private String message;
     private UserServiceImp userService;
     
+    public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
     public String getEmail() {
 		return email;
 	}
@@ -39,6 +46,7 @@ public class CustLoginAction extends ActionSupport {
     public String execute() throws Exception {
     	User user = userService.loginCheck(email, password);
     	if (user == null) {
+    		this.message = "Login user is not exist.";
     		return ERROR;
         }
     	

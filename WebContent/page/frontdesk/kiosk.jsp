@@ -48,6 +48,9 @@
 <body>
 	<s:hidden name="itemListSize" value="%{itemList.size()}" />
 	<form id="submitForm" name="submitForm" action="kiosk" method="post">
+		<s:if test='message != ""'>
+	      	<h3><font color='blue'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${message}</font></h3>
+		</s:if>
 		<section class="shop">
 		    <div class="container">
 		        <div class="team-list row">
