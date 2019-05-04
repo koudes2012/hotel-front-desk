@@ -50,7 +50,7 @@ public class ReservationServiceImpl {
     	return roomOrderList;
     }
 	
-	public int checkout(List<Reservation> reservationList) {
+	public int bookRoom(List<Reservation> reservationList) {
 		int orderTotal = 0;
 		for (int i=0; i<reservationList.size(); i++) {
 			Reservation reservation = reservationList.get(i);

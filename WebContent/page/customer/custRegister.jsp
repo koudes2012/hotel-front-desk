@@ -37,10 +37,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="agileits_grid">
 						<h5>Name * </h5>
 						<div class="nam">
-							<input type="text" name="firstName" placeholder="First Name" required="">
+							<input type="text" name="firstName" placeholder="First Name" required="" value="${firstName}">
 						</div>
 						<div class="nam1">
-							<input type="text" name="lastName" placeholder="Last Name" required="">
+							<input type="text" name="lastName" placeholder="Last Name" required="" value="${lastName}">
 						</div>
 						<div class="clear"></div>
 					</div>
@@ -48,13 +48,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="w3_agileits_main_grid w3l_main_grid">
 					<div class="agileits_grid">
 						<h5>E-mail * </h5>
-							<input type="email" name="email" placeholder="ex : myname@gmail.com" required="">
+							<input type="email" name="email" placeholder="ex : myname@gmail.com" required="" value="${email}">
 					</div>
 				</div>
 				<div class="agileits_main_grid w3_agileits_main_grid">
 					<div class="wthree_grid">
 						<h5>Phone Number *</h5>
-						<input type="text" name="phoneNumber" placeholder="1234567890" required="">
+						<input type="text" name="phoneNumber" placeholder="1234567890" required="" value="${phoneNumber}">
 					</div>
 				</div>
 				<div class="agileits_w3layouts_main_grid w3ls_main_grid">

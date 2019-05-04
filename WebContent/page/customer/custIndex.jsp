@@ -120,14 +120,14 @@
 		<div class="check-avail">
 			<div class="container">
 				<div class="arrival date-title ">
-					<label>Arrival Date </label>
+					<label>Check In Date </label>
 					<div id="datepicker" class="input-group date" data-date-format="dd-mm-yyyy">
 						<input class="form-control" type="text" name="arrivalDate"/>
 						<span class="input-group-addon"><img src="images/Home-1/date-icon.png" alt="#"></span>
 					</div>
 				</div>
 				<div class="departure date-title ">
-					<label>Departure Date </label>
+					<label>Check Out Date </label>
 					<div id="datepickeri" class="input-group date" data-date-format="dd-mm-yyyy">
 						<input class="form-control" type="text" name="departureDate"/>
 						<span class="input-group-addon"><img src="images/Home-1/date-icon.png" alt="#"></span>

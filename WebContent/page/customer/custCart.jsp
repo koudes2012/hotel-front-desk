@@ -120,16 +120,16 @@
 		<div class="check-avail">
 			<div class="container">
 				<div class="arrival date-title ">
-					<label>Arrival Date </label>
+					<label>Check In Date </label>
 					<div id="datepicker" class="input-group date" data-date-format="dd-mm-yyyy">
-						<input class="form-control" type="text" name="arrivalDate" id="arrivalDate">
+						<input class="form-control" type="text" name="arrivalDate" id="arrivalDatePicker" value="${arrivalDate}">
 						<span class="input-group-addon"><img src="images/Home-1/date-icon.png" alt="#"></span>
 					</div>
 				</div>
 				<div class="departure date-title ">
-					<label>Departure Date </label>
+					<label>Check Out Date </label>
 					<div id="datepickeri" class="input-group date" data-date-format="dd-mm-yyyy">
-						<input class="form-control" type="text" name="departureDate" id="departureDate">
+						<input class="form-control" type="text" name="departureDate" id="departureDatePicker" value="${departureDate}">
 						<span class="input-group-addon"><img src="images/Home-1/date-icon.png" alt="#"></span>
 					</div>
 				</div>
@@ -149,8 +149,8 @@
     <div class="container">
         
         <form id="checkoutForm" action="" method="post">
-		<s:hidden name="arrivalDate"/>
-		<s:hidden name="departureDate"/>
+		<s:hidden name="arrivalDate" styleId="arrivalDate"/>
+		<s:hidden name="departureDate" styleId="departureDate"/>
         <s:hidden name="reservationListSize" value="%{reservationList.size()}" />
        	<s:if test='%{reservationList.size()== 0}'>
        		<h3>No rooms are avaliable, please try different date.</h3>
@@ -274,6 +274,9 @@
 	$(document).ready(function(){
 		
 		$("#checkout_button").click(function(){
+			if(!checkDate()){
+				return;
+			}
 			var orderTotal = document.getElementById("orderTotal").innerHTML;
 			if (orderTotal == '0' || orderTotal == '' ) {
 				alert('please choose at least one room');
@@ -286,9 +289,30 @@
 	
 	$(document).ready(function(){
 		$("#availability_check").click(function(){
+			if(!checkDate()){
+				return;
+			}
 			$("#availabilityForm").attr("action", "custAvailability").submit();
 		});
+		
 	});
+	
+	function checkDate(){
+		var arrivalDatePicker = $("#arrivalDatePicker").val();
+		var sdate = arrivalDatePicker.split("-"); 
+		var arrivalDate = new Date(sdate[2], sdate[1]-1, sdate[0]); 
+
+		var departureDatePicker = $("#departureDatePicker").val();
+		var edate = departureDatePicker.split("-"); 
+		var departureDate = new Date(edate[2], edate[1]-1, edate[0]); 
+		
+		if (departureDate<arrivalDate) {
+			alert('Check Out Date should be ahead of Check In Date');
+			return false;
+		}
+		
+		return true;
+	}
 	
 	function countTotal(){
 		var reservationListSize = document.getElementsByName("reservationListSize")[0].value;
@@ -302,6 +326,13 @@
 		}
 		document.getElementById("orderTotal").innerHTML = orderTotal;
 	}
+	
+	window.onload=function(){ 
+		var arrivalDate = document.getElementById("arrivalDate").value;
+		$('#datepicker').data({date: arrivalDate}).datepicker('update').children("input").val(arrivalDate);
+		var arrivalDate = document.getElementById("departureDate").value;
+		$('#datepickeri').data({date: arrivalDate}).datepicker('update').children("input").val(arrivalDate);
+	} 
 </script>
 
 </body>

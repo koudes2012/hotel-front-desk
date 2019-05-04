@@ -51,7 +51,7 @@ public class CustCheckoutAction extends ActionSupport {
 	 */
     @Override
     public String execute() throws Exception {
-    	orderTotal = reservationService.checkout(this.reservationList);
+    	orderTotal = reservationService.bookRoom(this.reservationList);
         return SUCCESS;
     }
 
